@@ -1,26 +1,14 @@
 const {template} = require("sambal-ssg");
 
-const GuideTableOfContent = [
-    {category: "Introduction", menu: [
-        {label: "Another static site generator?", href: "#", id: "another-static-site-generator"},
-        {label: "Getting started", href: "#"}
-    ]},
-    {category: "Guide", menu: [
-        {label: "Linked data", href: "#"},
-        {label: "Rendering", href: "#"},
-        {label: "Deploying", href: "#"},
-    ]}
-];
-
-const renderTOC = (toc) => {
-    return ({jsonld}) => template`
+const renderTOC = (toc, pageId) => {
+    return template`
         <nav class="nav flex-column">
             ${toc.map(item => template`
                 <div class="toc-section">
                     <span class="font-weight-bold">${item.category}</span>
                     <ul class="nav toc-list flex-column">
                         ${item.menu.map(link => template`
-                            <li class="nav-item ${link.id === jsonld.identifier ? 'active' : null}">
+                            <li class="nav-item ${link.id === pageId ? 'active' : null}">
                                 <a href="${link.href}">${link.label}</a>
                             </li>
                         `)}
@@ -76,17 +64,23 @@ const renderNavBar = () => {
     `;
 }
 
-const renderContent = ({jsonld}) => {
+const renderContent = ({text}) => {
     return template`
-        ${jsonld.text}
+        ${text}
     `;
 };
 
+function getPageRenderer(head, toc) {
+    return (props) => {
+        return renderLayout({
+            head: head,
+            nav: renderNavBar(),
+            toc: renderTOC(toc, props.id),
+            content: renderContent(props)
+        });
+    };
+}
 
 module.exports = {
-    renderLayout: renderLayout,
-    renderNavBar: renderNavBar,
-    renderContent: renderContent,
-    renderTOC: renderTOC,
-    GuideTableOfContent: GuideTableOfContent
+    getPageRenderer: getPageRenderer
 };
