@@ -1,7 +1,7 @@
 ---
 headline: JsonLd and Schema.org
 description: Some description
-id: jsonld-and-schema-org
+id: deploy
 author:
     "@id": _:jsonld/me.yml
 ---
