@@ -1,10 +1,10 @@
 const {of, defer, forkJoin} = require("rxjs");
-const {map} = require("rxjs/operators");
+const {map, toArray} = require("rxjs/operators");
 const fs = require("fs");
-const {localFileMultiCast, render, Packager, loadHtml, pushSchemaOrgJsonLd, template} = require("sambal-ssg");
-const {getPageRenderer} = require("./js/templates");
+const {localFileMultiCast, render, Packager, loadHtml, pushSchemaOrgJsonLd, template, groupAndPaginateBy} = require("sambal-ssg");
+const {getPageRenderer, formatLink} = require("./js/templates");
 
-
+/*
 const GuideTableOfContent = [
     {category: "Introduction", menu: [
         {label: "Another static site generator?", href: "#", id: "another-static-site-generator"},
@@ -15,7 +15,7 @@ const GuideTableOfContent = [
         {label: "Rendering", href: "#"},
         {label: "Deploying", href: "#"},
     ]}
-];
+];*/
 
 const head = loadHtml("fragments/head.html");
 
@@ -31,10 +31,17 @@ packager
 
 const siteSource = localFileMultiCast("pages");
 
+const tableOfContent = siteSource
+.pipe(groupAndPaginateBy(1000, "category"))
+.pipe(toArray())
+.toPromise();
+
+
 siteSource
 .pipe(pushSchemaOrgJsonLd("WebPage"))
-.pipe(render(getPageRenderer(head, GuideTableOfContent)))
-.subscribe(packager.route(({id}) => `${id}.html`));
+.pipe(render(getPageRenderer(head, tableOfContent)))
+.subscribe(packager.route(formatLink));
+
 
 siteSource.connect();
 

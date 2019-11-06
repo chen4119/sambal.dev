@@ -2,8 +2,7 @@
 headline: Another static site generator?
 description: Some description
 id: get-started
-author:
-    "@id": _:jsonld/me.yml
+category: Introduction
 ---
 
 __Install__

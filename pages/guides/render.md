@@ -2,8 +2,7 @@
 headline: JsonLd and Schema.org
 description: Some description
 id: render
-author:
-    "@id": _:jsonld/me.yml
+category: Guides
 ---
 
 # Rendering to HTML

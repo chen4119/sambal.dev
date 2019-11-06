@@ -8,6 +8,7 @@ author:
 
 ## pushSchemaOrgJsonLd <span class="badge badge-primary">RxJs function</span>
 
+<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
 
 ```ts
 pushSchemaOrgJsonLd(type: string, options: {field?: string, context?: any} = {})
@@ -15,9 +16,11 @@ pushSchemaOrgJsonLd(type: string, options: {field?: string, context?: any} = {})
 
 __Parameters:__
 
-type: schema.org type, i.e. "Person", "Organization", etc.
+<span class="text-primary">__(Required) type:__</span> schema.org type
 
-options.field:
+<span class="text-primary">__(Optional) options.field:__</span> Transform json data from field
+
+<span class="text-primary">__(Optional) options.context:__</span> Json-ld context
 
 
 ### __Examples__

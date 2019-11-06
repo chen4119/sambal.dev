@@ -2,8 +2,7 @@
 headline: Sambal and RxJs
 description: Some description
 id: sambal-and-rxjs
-author:
-    "@id": _:jsonld/me.yml
+category: Guides
 ---
 
 # Sambal and RxJs

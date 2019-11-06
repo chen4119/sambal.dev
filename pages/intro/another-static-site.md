@@ -2,8 +2,7 @@
 headline: Another static site generator?
 description: Some description
 id: another-static-site-generator
-author:
-    "@id": _:jsonld/me.yml
+category: Introduction
 ---
 Someone will ask this question so that’s why this is in the Introduction.  Yes, there are a lot of static site generators out there.  Jekyll, Hugo, GatsbyJS, VuePress, just to name a few popular ones but each one is essentially just a different way of constructing and manipulating a HTML document.  GatsbyJS and VuePress have the added benefit of PWA features which make your site speedier.
 

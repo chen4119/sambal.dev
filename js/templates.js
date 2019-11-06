@@ -1,15 +1,19 @@
 const {template} = require("sambal-ssg");
 
-const renderTOC = (toc, pageId) => {
+const formatLink = ({category, id}) => `${category}/${id}.html`.toLocaleLowerCase();
+
+const renderTOC = async (toc, pageId) => {
+    const groups = await toc;
+    console.log(groups);
     return template`
         <nav class="nav flex-column">
-            ${toc.map(item => template`
+            ${groups.map(group => template`
                 <div class="toc-section">
-                    <span class="font-weight-bold">${item.category}</span>
+                    <span class="font-weight-bold">${group.category}</span>
                     <ul class="nav toc-list flex-column">
-                        ${item.menu.map(link => template`
-                            <li class="nav-item ${link.id === pageId ? 'active' : null}">
-                                <a href="${link.href}">${link.label}</a>
+                        ${group.items.map(item => template`
+                            <li class="nav-item ${item.id === pageId ? 'active' : null}">
+                                <a href="${formatLink(item)}">${item.headline}</a>
                             </li>
                         `)}
                     </ul>
@@ -82,5 +86,6 @@ function getPageRenderer(head, toc) {
 }
 
 module.exports = {
-    getPageRenderer: getPageRenderer
+    getPageRenderer: getPageRenderer,
+    formatLink: formatLink
 };
