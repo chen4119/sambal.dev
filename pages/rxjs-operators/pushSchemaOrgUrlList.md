@@ -1,17 +1,16 @@
 ---
-headline: pushSchemaOrgJsonLd
+headline: pushSchemaOrgUrlList
 description: Convert a json object into a schema.org jsonld object
-id: pushschemaorgjsonld
-author:
-    "@id": _:jsonld/me.yml
+id: pushSchemaOrgUrlList
+order: 8
 ---
 
-## pushSchemaOrgJsonLd <span class="badge badge-primary">RxJs function</span>
+## pushSchemaOrgUrlList
 
 <p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
 
 ```ts
-pushSchemaOrgJsonLd(type: string, options: {field?: string, context?: any} = {})
+pushSchemaOrgUrlList(options: {field?: string, itemListProps?: object, context?: any} = {itemListProps: {}})
 ```
 
 __Parameters:__

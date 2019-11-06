@@ -1,8 +1,8 @@
 ---
-headline: JsonLd and Schema.org
+headline: Rendering to HTML
 description: Some description
-id: render
-category: Guides
+id: render-to-html
+order: 3
 ---
 
 # Rendering to HTML

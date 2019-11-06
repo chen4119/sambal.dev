@@ -2,7 +2,7 @@
 headline: Sambal and RxJs
 description: Some description
 id: sambal-and-rxjs
-category: Guides
+order: 1
 ---
 
 # Sambal and RxJs

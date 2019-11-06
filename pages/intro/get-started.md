@@ -1,8 +1,8 @@
 ---
-headline: Another static site generator?
+headline: Get started
 description: Some description
 id: get-started
-category: Introduction
+order: 1
 ---
 
 __Install__

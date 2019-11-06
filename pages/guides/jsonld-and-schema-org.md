@@ -1,8 +1,8 @@
 ---
-headline: JsonLd and Schema.org
+headline: Json-ld and Schema.org
 description: Some description
 id: jsonld-and-schema-org
-category: Guides
+order: 2
 ---
 
 # Schema.org

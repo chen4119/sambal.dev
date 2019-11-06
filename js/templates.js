@@ -1,10 +1,9 @@
 const {template} = require("sambal-ssg");
 
-const formatLink = ({category, id}) => `${category}/${id}.html`.toLocaleLowerCase();
+const formatLink = ({folder, id}) => `${folder}/${id}.html`.toLocaleLowerCase();
 
 const renderTOC = async (toc, pageId) => {
-    const groups = await toc;
-    console.log(groups);
+    const groups = await Promise.all(toc);
     return template`
         <nav class="nav flex-column">
             ${groups.map(group => template`
