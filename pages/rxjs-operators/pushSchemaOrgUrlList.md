@@ -1,13 +1,13 @@
 ---
 headline: pushSchemaOrgUrlList
-description: Convert a json object into a schema.org jsonld object
+description: Transform an array of urls to schema.org ItemList type
 id: pushSchemaOrgUrlList
 order: 8
 ---
 
 ## pushSchemaOrgUrlList
 
-<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
+<p class="lead">Transform an array of urls to schema.org ItemList type</p>
 
 ```ts
 pushSchemaOrgUrlList(options: {field?: string, itemListProps?: object, context?: any} = {itemListProps: {}})
@@ -15,9 +15,9 @@ pushSchemaOrgUrlList(options: {field?: string, itemListProps?: object, context?:
 
 __Parameters:__
 
-<span class="text-primary">__(Required) type:__</span> schema.org type
-
 <span class="text-primary">__(Optional) options.field:__</span> Transform json data from field
+
+<span class="text-primary">__(Optional) options.itemListProps:__</span> Extra props to add to schema.org ItemList
 
 <span class="text-primary">__(Optional) options.context:__</span> Json-ld context
 

@@ -2,7 +2,7 @@ const {of, defer, forkJoin, from} = require("rxjs");
 const {map, toArray, mergeAll} = require("rxjs/operators");
 const fs = require("fs");
 const {localFileMultiCast, render, Packager, loadHtml, pushSchemaOrgJsonLd, template, groupAndPaginateBy} = require("sambal-ssg");
-const {getPageRenderer, formatLink} = require("./js/templates");
+const {getPageRenderer, getLandingRenderer, formatLink} = require("./js/templates");
 
 const HOST = "https://sambal.dev";
 const head = loadHtml("fragments/head.html");
@@ -18,11 +18,13 @@ packager
 const CATEGORY_INTRO = "Introduction";
 const CATEGORY_GUIDE = "Guides";
 const CATEGORY_RXJS_OPERATOR = "RxJs Operators";
+const CATEGORY_CLASS = "Classes";
 
 const sources = [
     {category: CATEGORY_INTRO, observable: localFileMultiCast("pages/intro")},
     {category: CATEGORY_GUIDE, observable: localFileMultiCast("pages/guides")},
     {category: CATEGORY_RXJS_OPERATOR, observable: localFileMultiCast("pages/rxjs-operators")},
+    {category: CATEGORY_CLASS, observable: localFileMultiCast("pages/classes")}
 ];
 
 function withFolderAndUrl(category, observable) {
@@ -64,6 +66,14 @@ from(sources.map(s => withFolderAndUrl(s.category, s.observable)))
 .subscribe(packager.route(formatLink));
 
 sources.forEach(s => s.observable.connect());
+
+const landingSource = localFileMultiCast("pages/landing.md");
+
+landingSource
+.pipe(render(getLandingRenderer(head)))
+.subscribe(packager.route(() => "index.html"));
+
+landingSource.connect();
 
 
 

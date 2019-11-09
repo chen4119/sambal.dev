@@ -1,25 +1,27 @@
 ---
 headline: paginate
-description: Convert a json object into a schema.org jsonld object
+description: Use bufferCount to break a stream of data into pages of certain size.  Paginate will keep track of the number of pages, the begin and end index count of the items in the page
 id: paginate
 order: 5
 ---
 
 ## paginate
 
-<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
+<p class="lead">Use bufferCount to break a stream of data into pages of certain size.  Paginate will keep track of the number of pages, the begin and end index count of the items in the page.  Source data passed to paginate needs to be an array and the resulting data will have the following schema</p>
+<pre>
+<code>
+{
+    page // Page count,
+    begin // Begin index count,
+    end // End index count,
+    items // Source data,
+    hasNext // Has next page?
+}
+</code>
+</pre>
 
 ```ts
 paginate()
 ```
-
-__Parameters:__
-
-<span class="text-primary">__(Required) type:__</span> schema.org type
-
-<span class="text-primary">__(Optional) options.field:__</span> Transform json data from field
-
-<span class="text-primary">__(Optional) options.context:__</span> Json-ld context
-
 
 ### __Examples__

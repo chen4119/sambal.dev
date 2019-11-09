@@ -84,7 +84,43 @@ function getPageRenderer(head, toc) {
     };
 }
 
+const renderLanding = ({head, nav, content}) => {
+    return template`
+        <!doctype html>
+        <html>
+            <head>
+                ${head}
+            </head>
+            <body>
+                ${nav}
+                <div class="container main">
+                    <div class="text-center">
+                        <div class="container">
+                            <h1 class="display-3">Sambal</h1>
+                            <h3 class="text-muted">A semantic static site generator</h3>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        ${content}
+                    </div>
+                </main>
+            </body>
+        </html>
+    `;
+};
+
+function getLandingRenderer(head) {
+    return (props) => {
+        return renderLanding({
+            head: head,
+            nav: renderNavBar(),
+            content: renderContent(props)
+        });
+    };
+}
+
 module.exports = {
     getPageRenderer: getPageRenderer,
+    getLandingRenderer: getLandingRenderer,
     formatLink: formatLink
 };

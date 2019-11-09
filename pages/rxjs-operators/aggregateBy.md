@@ -1,13 +1,13 @@
 ---
 headline: aggregateBy
-description: Convert a json object into a schema.org jsonld object
+description: Aggregate by specified field
 id: aggregateBy
 order: 1
 ---
 
 ## aggregateBy
 
-<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
+<p class="lead">Aggregate by specified field</p>
 
 ```ts
 aggregateBy(field: string)
@@ -15,11 +15,7 @@ aggregateBy(field: string)
 
 __Parameters:__
 
-<span class="text-primary">__(Required) type:__</span> schema.org type
-
-<span class="text-primary">__(Optional) options.field:__</span> Transform json data from field
-
-<span class="text-primary">__(Optional) options.context:__</span> Json-ld context
+<span class="text-primary">__(Required) field:__</span> field to aggregate by
 
 
 ### __Examples__

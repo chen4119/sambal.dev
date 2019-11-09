@@ -1,13 +1,25 @@
 ---
 headline: groupAndPaginateBy
-description: Convert a json object into a schema.org jsonld object
+description: Group by field then paginate each group
 id: groupAndPaginateBy
 order: 2
 ---
 
 ## groupAndPaginateBy
 
-<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
+<p class="lead">Group by field then paginate each group.  Paginate will keep track of the page count, the begin and end index count of the items in the page.  The resulting data will have the following schema</p>
+<pre>
+<code>
+{
+    groupBy // Group by key,
+    page // Page count,
+    begin // Begin index count,
+    end // End index count,
+    items // Source data,
+    hasNext // Has next page?
+}
+</code>
+</pre>
 
 ```ts
 groupAndPaginateBy(pageSize: number, field: string)
@@ -15,11 +27,8 @@ groupAndPaginateBy(pageSize: number, field: string)
 
 __Parameters:__
 
-<span class="text-primary">__(Required) type:__</span> schema.org type
+<span class="text-primary">__(Required) pageSize:__</span> Page Size
 
-<span class="text-primary">__(Optional) options.field:__</span> Transform json data from field
-
-<span class="text-primary">__(Optional) options.context:__</span> Json-ld context
-
+<span class="text-primary">__(Required) field:__</span> Field to group by
 
 ### __Examples__

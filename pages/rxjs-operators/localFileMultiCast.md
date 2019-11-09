@@ -7,7 +7,9 @@ order: 4
 
 ## localFileMultiCast
 
-<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
+<p class="lead">Load </p>
+
+<p class="lead">Support content types markdown, json, yaml, or html with embedded schema.org json-ld</p>
 
 ```ts
 localFileMultiCast(...sources: string[])
@@ -15,11 +17,6 @@ localFileMultiCast(...sources: string[])
 
 __Parameters:__
 
-<span class="text-primary">__(Required) type:__</span> schema.org type
-
-<span class="text-primary">__(Optional) options.field:__</span> Transform json data from field
-
-<span class="text-primary">__(Optional) options.context:__</span> Json-ld context
-
+<span class="text-primary">__(Required) sources:__</span> File or directory paths relative to the project root directory
 
 ### __Examples__

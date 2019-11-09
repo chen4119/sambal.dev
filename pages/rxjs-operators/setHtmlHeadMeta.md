@@ -1,13 +1,13 @@
 ---
 headline: setHtmlHeadMeta
-description: Convert a json object into a schema.org jsonld object
+description: Map head meta tags to data fields
 id: setHtmlHeadMeta
-order: 9
+order: 10
 ---
 
 ## setHtmlHeadMeta
 
-<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
+<p class="lead">Map head meta tags to data fields.  Possible keys are title, description, og:title, og:description, twitter:title, twitter:description</p>
 
 ```ts
 setHtmlHeadMeta(metaSelectors: {[propName: string]: string})
@@ -15,11 +15,7 @@ setHtmlHeadMeta(metaSelectors: {[propName: string]: string})
 
 __Parameters:__
 
-<span class="text-primary">__(Required) type:__</span> schema.org type
-
-<span class="text-primary">__(Optional) options.field:__</span> Transform json data from field
-
-<span class="text-primary">__(Optional) options.context:__</span> Json-ld context
+<span class="text-primary">__(Required) metaSelectors:__</span> Map of head meta tag name to data field name
 
 
 ### __Examples__

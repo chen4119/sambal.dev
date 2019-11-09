@@ -1,13 +1,13 @@
 ---
 headline: toHtml
-description: Convert a json object into a schema.org jsonld object
+description: Need to be call after rendering.  Return the rendered HTML string
 id: toHtml
-order: 10
+order: 11
 ---
 
 ## toHtml
 
-<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
+<p class="lead">Need to be call after rendering.  Return the rendered HTML string</p>
 
 ```ts
 toHtml()

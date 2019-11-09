@@ -1,13 +1,23 @@
 ---
 headline: Another static site generator?
-description: Some description
+description: The goal of Sambal is to transform your proprietary data into HTML and semantic metadata.  It natively supports json-ld format and schema.org vocabulary and provide a seamless way to simultaneouly transform your data into HTML and schema.org json-ld.  This way, your HTML and metadata are always consistent with each other.
 id: another-static-site-generator
 order: 2
 ---
-Someone will ask this question so that’s why this is in the Introduction.  Yes, there are a lot of static site generators out there.  Jekyll, Hugo, GatsbyJS, VuePress, just to name a few popular ones but each one is essentially just a different way of constructing and manipulating a HTML document.  GatsbyJS and VuePress have the added benefit of PWA features which make your site speedier.
+# Another static site generator?
 
-Sambal is not about inventing a new way to make an HTML document.  We opt for well known, standard way of creating HTML such as Javascript template literal for templating and use your favorite UI library (React, Vue, LitElement, etc.) for web components.  We take pride in introducing as little new things as possible.  
+There are a lot of static site generators out there.  Jekyll, Hugo, GatsbyJS are just a few of the more popular ones.  Why should you choose to use Sambal?  You might be asking yourself that question now.  Allow me to re-introduce you to a static site generator.
 
-Sambal is essentially a static site generator that transforms your schema.org jsonld data into a HTML document. Schema.org’s comprehensive vocabulary for structured data is founded by Google, Microsoft and other big search engines.  Rather than creating your own schema for your site and pigeonholing yourself in a secluded data island, why not leverage a community driven set of schemas to increase the SEO of your site and have more control on how your site is linked with the vast amount of other data on the internet? 
+Traditionally, the main job of a static site generator is to transform your PROPRIETARY data into HTML.  Emphasis on proprietary because chances are only you or your organization understand your data.  You might not even think that's a problem.  Why should you care if a stranger doesn't understand your data?  But here's the thing.  The vast majority of content created are not unique.  Just think about how many static site generators you've already used before reading this and you'll understand how content and ideas will eventually converge.  That's why the big search engines like Google, Microsoft and Yandex created schema.org to standardize some of the most frequently seen content on the web. But how does that benefit you as a content creator?  Here are two big reasons.
 
-At the end of the day, websites are radically more useful when they are appropriately linked to the right data.  It’s how your audience discover you, it’s how your audience make sense of your content.  Increasingly, structured data is more important than the plain old HTML document.  It’s time webmasters treat their data schemas as first class citizens and HTML documents as simply a side effect of your data.  Not the other way around.
+1) Use schema.org metadata to improve search ranking with Google and Microsoft
+2) Increase your discoverability.  Eyeballs are not your only audience.  Recommendation engine and bots of every kind crawl the web for data.
+
+Now back to how Sambal differs from the other static site generators in the market.  The goal of Sambal is to transform your proprietary data into HTML and semantic metadata.  It natively supports json-ld format, schema.org vocabulary and provide a seamless way to simultaneouly transform your data into HTML and schema.org json-ld.  This way, your HTML and metadata are always consistent with each other.
+
+Otherwise, Sambal is un-opinionated about your directory structure, where your data resides (i.e. REST, GraphQL or locally), or what UI library you want to use, if any, as long as you can compile it into a HTML5 custom element.  We take pride in introducing as little proprietary things as possible.  
+
+
+
+https://developers.google.com/search/docs/guides/intro-structured-data
+

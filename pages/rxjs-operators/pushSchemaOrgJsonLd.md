@@ -1,6 +1,6 @@
 ---
 headline: pushSchemaOrgJsonLd
-description: Convert a json object into a schema.org jsonld object
+description: Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type
 id: pushschemaorgjsonld
 order: 7
 ---
