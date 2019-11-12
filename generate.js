@@ -1,8 +1,8 @@
 const {of, defer, forkJoin, from} = require("rxjs");
 const {map, toArray, mergeAll} = require("rxjs/operators");
-const fs = require("fs");
-const {localFileMultiCast, render, Packager, loadHtml, pushSchemaOrgJsonLd, template, groupAndPaginateBy} = require("sambal-ssg");
+const {jsonldMultiCast, render, Packager, loadHtml, pushSchemaOrgJsonLd} = require("sambal-ssg");
 const {getPageRenderer, getLandingRenderer, formatLink} = require("./js/templates");
+
 
 const HOST = "https://sambal.dev";
 const head = loadHtml("fragments/head.html");
@@ -21,10 +21,10 @@ const CATEGORY_RXJS_OPERATOR = "RxJs Operators";
 const CATEGORY_CLASS = "Classes";
 
 const sources = [
-    {category: CATEGORY_INTRO, observable: localFileMultiCast("pages/intro")},
-    {category: CATEGORY_GUIDE, observable: localFileMultiCast("pages/guides")},
-    {category: CATEGORY_RXJS_OPERATOR, observable: localFileMultiCast("pages/rxjs-operators")},
-    {category: CATEGORY_CLASS, observable: localFileMultiCast("pages/classes")}
+    {category: CATEGORY_INTRO, observable: jsonldMultiCast("pages/intro")},
+    {category: CATEGORY_GUIDE, observable: jsonldMultiCast("pages/guides")},
+    {category: CATEGORY_RXJS_OPERATOR, observable: jsonldMultiCast("pages/rxjs-operators")},
+    {category: CATEGORY_CLASS, observable: jsonldMultiCast("pages/classes")}
 ];
 
 function withFolderAndUrl(category, observable) {
@@ -67,16 +67,10 @@ from(sources.map(s => withFolderAndUrl(s.category, s.observable)))
 
 sources.forEach(s => s.observable.connect());
 
-const landingSource = localFileMultiCast("pages/landing.md");
+const landingSource = jsonldMultiCast("pages/landing.md");
 
 landingSource
 .pipe(render(getLandingRenderer(head)))
-.subscribe(packager.route(() => "index.html"));
+.subscribe(packager.route("index.html"));
 
 landingSource.connect();
-
-
-
-
-
-

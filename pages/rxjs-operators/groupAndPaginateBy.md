@@ -22,13 +22,14 @@ order: 2
 </pre>
 
 ```ts
-groupAndPaginateBy(pageSize: number, field: string)
+groupAndPaginateBy(field: string, pageSize: number = Number.MAX_SAFE_INTEGER)
 ```
 
 __Parameters:__
 
-<span class="text-primary">__(Required) pageSize:__</span> Page Size
-
 <span class="text-primary">__(Required) field:__</span> Field to group by
+
+<span class="text-primary">__(Optional) pageSize:__</span> Page Size
+
 
 ### __Examples__

@@ -1,18 +1,18 @@
 ---
-headline: localFileMultiCast
+headline: jsonldMultiCast
 description: Convert a json object into a schema.org jsonld object
-id: localFileMultiCast
+id: jsonldMultiCast
 order: 4
 ---
 
-## localFileMultiCast
+## jsonldMultiCast
 
 <p class="lead">Load </p>
 
 <p class="lead">Support content types markdown, json, yaml, or html with embedded schema.org json-ld</p>
 
 ```ts
-localFileMultiCast(...sources: string[])
+jsonldMultiCast(...sources: string[])
 ```
 
 __Parameters:__

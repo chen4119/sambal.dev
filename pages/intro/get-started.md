@@ -5,91 +5,55 @@ id: get-started
 order: 1
 ---
 
-__Install__
+# Introduction
+
+Sambal is essentially a library of custom RxJs operators so if you're already familiar with [RxJs](https://rxjs-dev.firebaseapp.com/), you'll feel right at home.  The main concept behind Sambal is framing your data as simply streams of json-ld data.  If you're not familiar with json-ld, no worries, we're no experts either.  Think of it as a superset of json, kinda like how Typescript is a superset of Javascript, so any json data will work.  It just won't have any semantic meaning.
+
+With that in mind, the static site generation process is just combining and transforming streams of json-ld data into a valid HTML document.  That's where RxJs excels and you also have the entire existing [RxJS operators](https://rxjs-dev.firebaseapp.com/guide/operators) in your disposal to create your data pipeline.  Let's get started.
+
+
+## Install
 
 ```js
 npm install --save-dev sambal-ssg
 ```
 
-__Create a markdown file__
 
-Create a person.md file with the following content
+## Leveraging RxJs
 
-```md
----
-name: John Smith
-email: john.smith@hotmail.com
-gender: Male
-description: John Smith's profile
-sameAs:
-  - https://github.com/johnsmith
----
-```
-
-__Make a static web page with schema.org metadata__
-
-Create a generate.js file with the following content
+__Merge a list of static page with a list of blog post__
 
 ```js
+const {from} = require("rxjs");
+const {mergeAll} = require("rxjs/operators");
+const {jsonldMultiCast} = require("sambal-ssg");
 
-const {localFileMultiCast, render, Packager, pushSchemaOrgJsonLd, template} = require("sambal-ssg");
+const pageSource = jsonldMultiCast("pages");
+const blogSource = jsonldMultiCast("blogs");
 
-const packager = new Packager("./public");
+from([pageSource, blogSource])
+.pipe(mergeAll())
 
-const renderPerson = ({name}) => {
-    return template`
-        <html>
-            <head>
-                <title>My first page</title>
-            </head>
-            <body>
-                <h1>Hello world from ${name}</h1>
-            </body>
-        </html>
-    `;
-};
-
-const source = localFileMultiCast("person.md");
-
-source
-.pipe(pushSchemaOrgJsonLd("Person"))
-.pipe(render(renderPerson))
-.subscribe(packager.route("person.html"));
-
-source.connect(); // connect() to start multicast
+pageSource.connect();
+blogSource.connect();
 ```
 
-Run it
+__Multicast data to multiple data streams__
 
 ```js
-node generate.js
-```
+const {bufferCount} = require("rxjs/operators");
+const {jsonldMultiCast, render, paginate} = require("sambal-ssg");
 
-public/person.html is generated!
+const blogSource = jsonldMultiCast("blogs");
 
-```html
-<html>
-  <head>
-    <title>My first page</title>
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@graph": [
-          {
-            "@type": "Person",
-            "email": "john.smith@hotmail.com",
-            "gender": "Male",
-            "description": "John Smith's profile",
-            "name": "John Smith",
-            "sameAs": ["https://github.com/johnsmith"],
-            "@id": "_:1"
-          }
-        ]
-      }
-    </script>
-  </head>
-  <body>
-    <h1>Hello world from John Smith</h1>
-  </body>
-</html>
+blogSource
+.pipe(bufferCount(10))
+.pipe(paginate())
+.pipe(render(getBlogListRenderer()))
+
+blogSource
+.pipe(pushSchemaOrgJsonLd("BlogPosting"))
+.pipe(render(getBlogPostRenderer()))
+
+blogSource.connect();
 ```

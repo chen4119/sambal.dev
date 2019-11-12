@@ -2,7 +2,7 @@
 headline: Rendering to HTML
 description: Some description
 id: render-to-html
-order: 3
+order: 2
 ---
 
 # Rendering to HTML

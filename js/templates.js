@@ -1,6 +1,7 @@
 const {template} = require("sambal-ssg");
 
 const formatLink = ({folder, id}) => `${folder}/${id}.html`.toLocaleLowerCase();
+const DocumentationEntryPath = "introduction/get-started.html";
 
 const renderTOC = async (toc, pageId) => {
     const groups = await Promise.all(toc);
@@ -56,10 +57,7 @@ const renderNavBar = () => {
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Docs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Reference</a>
+                        <a class="nav-link" href="${DocumentationEntryPath}">Docs</a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +82,7 @@ function getPageRenderer(head, toc) {
     };
 }
 
-const renderLanding = ({head, nav, content}) => {
+const renderLanding = ({head, nav, headline, description, content}) => {
     return template`
         <!doctype html>
         <html>
@@ -96,8 +94,8 @@ const renderLanding = ({head, nav, content}) => {
                 <div class="container main">
                     <div class="text-center">
                         <div class="container">
-                            <h1 class="display-3">Sambal</h1>
-                            <h3 class="text-muted">A semantic static site generator</h3>
+                            <h1 class="display-3">${headline}</h1>
+                            <h3 class="text-muted">${description}</h3>
                         </div>
                     </div>
                     <div class="text-center">
@@ -112,6 +110,7 @@ const renderLanding = ({head, nav, content}) => {
 function getLandingRenderer(head) {
     return (props) => {
         return renderLanding({
+            ...props,
             head: head,
             nav: renderNavBar(),
             content: renderContent(props)
