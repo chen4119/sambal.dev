@@ -7,7 +7,9 @@ order: 1
 
 # Schema.org
 
-[Schema.org](https://schema.org/) is a set of schemas for structured data markup on webpages.  It was started by Google, Yahoo, Microsoft and Yandex in 2011.  Many high traffic sites like Linkedin, AllRecipes, IMDb, Wikipedia, etc. are already using it.  It's the metadata that powers virtual assistants, events and flight reminders in your e-mail, and the featured search results on Google.  It can be encoded in rdf, microdata and json-ld.
+[Schema.org](https://schema.org/) is a set of schemas for structured data markup on webpages.  It was started by Google, Yahoo, Microsoft and Yandex in 2011.  Many high traffic sites like Linkedin, AllRecipes, IMDb, Wikipedia, etc. are already using it.  It's the metadata that powers virtual assistants, events and flight reminders in your e-mail, and the featured search results on Google.  It can be encoded in many formats such as rdf, microdata and json-ld.
+
+# Json-ld
 
 Json-ld seems like the most obvious format to encode schema.org since json is already so widely used and any json object can be turned into json-ld simply by adding @context.  For example, you have the following json data.
 
@@ -41,9 +43,7 @@ To transform that to a schema.org Person json-ld, you don't even need to change 
 
 ```
 
-That's it!  You now have a schema.org person json-ld object!  The @context field tells the json-ld processor that you are using schema.org vocabulary and to map firstName and lastName to schema.org defined givenName and familyName.  Sambal has a 
-
-
+That's it!  You now have a schema.org person json-ld object!  The @context field tells the json-ld processor that you are using schema.org vocabulary and to map firstName and lastName to schema.org defined givenName and familyName.
 
 An important thing to note is that json-ld is a generic data format and not exclusively tied to schema.org in any way.  You can also use json-ld to encode ActivityPub or FOAF or other semantic vocabularies.  By supporting json-ld natively in Sambal, 
 
