@@ -25,7 +25,7 @@ image: 'ImageObject (http://schema.org/ImageObject) or url - recommended by Goog
 description: text - recommended by Google
 identifier: Unique identifier or URL
 sameAs: url
-url: Will be auto populated by Sambal
+url: url
 colleague: 'Person (http://schema.org/Person) or url'
 email: text
 familyName: text
@@ -73,9 +73,3 @@ To transform that to a schema.org Person json-ld, you don't even need to change 
 ```
 
 That's it!  You now have a schema.org person json-ld object!  The @context field tells the json-ld processor that you are using schema.org vocabulary and to map firstName and lastName to schema.org defined givenName and familyName.
-
-An important thing to note is that json-ld is a generic data format and not exclusively tied to schema.org in any way.  You can also use json-ld to encode ActivityPub or FOAF or other semantic vocabularies.  By supporting json-ld natively in Sambal, 
-
-Unfortunately a lot of the legacy softwares available today does not make it easy for you to embed schema.org in your website.  Every CMS has it's own database schema and every webmaster represent his data in his own unique schema.  As a result, the translation to schema.org metadata at a later stage of development involves a lot of manual labor and not always easy.
-
-
