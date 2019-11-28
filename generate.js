@@ -19,12 +19,14 @@ const CATEGORY_INTRO = "Introduction";
 const CATEGORY_GUIDE = "Guides";
 const CATEGORY_RXJS_OPERATOR = "RxJs Operators";
 const CATEGORY_CLASS = "Classes";
+const CATEGORY_CLI = "CLI";
 
 const sources = [
     {category: CATEGORY_INTRO, observable: jsonldMultiCast("pages/intro")},
     {category: CATEGORY_GUIDE, observable: jsonldMultiCast("pages/guides")},
     {category: CATEGORY_RXJS_OPERATOR, observable: jsonldMultiCast("pages/rxjs-operators")},
-    {category: CATEGORY_CLASS, observable: jsonldMultiCast("pages/classes")}
+    {category: CATEGORY_CLASS, observable: jsonldMultiCast("pages/classes")},
+    {category: CATEGORY_CLI, observable: jsonldMultiCast("pages/cli")}
 ];
 
 function withFolderAndUrl(category, observable) {
