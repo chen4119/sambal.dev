@@ -1,7 +1,7 @@
 ---
 headline: aggregateBy
 description: Aggregate by specified field
-id: aggregateBy
+category: RxJs Operators
 order: 1
 ---
 

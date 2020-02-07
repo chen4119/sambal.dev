@@ -1,7 +1,7 @@
 ---
 headline: Get started
 description: Some description
-id: get-started
+category: Introduction
 order: 1
 ---
 

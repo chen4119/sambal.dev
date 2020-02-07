@@ -1,8 +1,8 @@
 ---
 headline: render
 description: Render data to HTML
-id: render
-order: 9
+category: RxJs Operators
+order: 4
 ---
 
 ## setHtmlHeadMeta

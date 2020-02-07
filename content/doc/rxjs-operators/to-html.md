@@ -1,8 +1,8 @@
 ---
 headline: toHtml
 description: Need to be call after rendering.  Return the rendered HTML string
-id: toHtml
-order: 11
+category: RxJs Operators
+order: 5
 ---
 
 ## toHtml

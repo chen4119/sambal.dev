@@ -1,8 +1,8 @@
 ---
 headline: pushSchemaOrgJsonLd
 description: Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type
-id: pushschemaorgjsonld
-order: 7
+category: RxJs Operators
+order: 3
 ---
 
 ## pushSchemaOrgJsonLd

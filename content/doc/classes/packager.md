@@ -1,7 +1,7 @@
 ---
 headline: Packager
 description: Responsible for packaging your website into a destination folder.  The route function returns an observable to process your data stream into HTML files
-id: Packager
+category: Classes
 order: 1
 ---
 

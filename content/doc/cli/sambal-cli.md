@@ -1,7 +1,7 @@
 ---
 headline: Sambal cli
 description: CLI tool to generate schema.org skeleton files
-id: sambal-cli
+category: CLI
 order: 1
 ---
 

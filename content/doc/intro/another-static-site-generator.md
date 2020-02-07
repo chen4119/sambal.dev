@@ -1,7 +1,7 @@
 ---
 headline: Another static site generator?
 description: The goal of Sambal is to transform your proprietary data into HTML and semantic metadata.  It natively supports json-ld format and schema.org vocabulary and provide a seamless way to simultaneouly transform your data into HTML and schema.org json-ld.  This way, your HTML and metadata are always consistent with each other.
-id: another-static-site-generator
+category: Introduction
 order: 2
 ---
 # Another static site generator?

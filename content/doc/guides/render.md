@@ -1,7 +1,7 @@
 ---
 headline: Rendering to HTML
 description: To render a json object to HTML, you just need to provide a render function with a props object as the only argument, inspired by React's render function
-id: render-to-html
+category: Guides
 order: 2
 ---
 
