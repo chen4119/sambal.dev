@@ -30,8 +30,8 @@ module.exports = {
     contentPath: "content",
     collections: [{
         name: "docs",
-        groupBy: "category"
-        // sortBy: [{field: "order", order: "asc"}]
+        groupBy: "category",
+        sortBy: [{field: "order", order: "asc"}]
     }],
     route$: route
 };

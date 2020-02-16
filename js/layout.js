@@ -1,6 +1,6 @@
 const {template} = require("sambal");
 
-const DocumentationEntryPath = "introduction/get-started.html";
+const DocumentationEntryPath = "doc/intro/get-started";
 
 const renderLayout = ({head, nav, toc, content}) => {
     return template`
@@ -29,7 +29,7 @@ const renderLayout = ({head, nav, toc, content}) => {
 const renderNavBar = () => {
     return template`
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/">Sambal</a>
+            <a class="navbar-brand" href="/landing">Sambal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

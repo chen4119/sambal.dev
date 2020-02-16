@@ -2,6 +2,7 @@ const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("samb
 const {renderLayout, renderNavBar, renderContent} = require("./layout");
 const {from} = require("rxjs");
 const {filter, map, toArray} = require("rxjs/operators");
+const url = require("url");
 
 const CATEGORY_INTRO = "Introduction";
 const CATEGORY_GUIDE = "Guides";
@@ -18,8 +19,8 @@ const renderTOC = async (toc, pageId) => {
                     <span class="font-weight-bold">${group.category}</span>
                     <ul class="nav toc-list flex-column">
                         ${group.items.map(item => template`
-                            <li class="nav-item ${item.id === pageId ? 'active' : null}">
-                                <a href="${item.url}">${item.headline}</a>
+                            <li class="nav-item ${item.url === pageId ? 'active' : null}">
+                                <a href="${url.parse(item.url).pathname}">${item.headline}</a>
                             </li>
                         `)}
                     </ul>
@@ -34,7 +35,7 @@ function getPageRenderer(head, toc) {
         return renderLayout({
             head: head,
             nav: renderNavBar(),
-            toc: renderTOC(toc, props.id),
+            toc: renderTOC(toc, props.url),
             content: renderContent(props)
         });
     };
