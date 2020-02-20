@@ -1,10 +1,18 @@
 ---
 headline: Sambal
-description: A semantic static site generator
+description: A linked data static site generator
 ---
 
+```ShellSession
+$ npm install --save-dev sambal-cli
 
-<p class="lead text-muted">Your blogpost.md</p>
+$ mkdir content/blogs
+
+$ touch content/blogs/hello-world.md
+
+```
+
+<p class="lead text-muted">Edit content/blogs/hello-world.md</p>
 
 ```md
 ---
@@ -17,42 +25,85 @@ keywords: ["sambal", "jamstack"]
 Hello world
 ```
 
-<p class="lead text-muted">Use Sambal to tranform into HTML with schema.org metadata</p>
+```bash
+touch sambal.config.js
 
+touch blog.js
+```
+
+<p class="lead text-muted">Edit sambal.config.js</p>
 
 ```js
-const {jsonldMultiCast, render, Packager, pushSchemaOrgJsonLd, template} = require("sambal-ssg");
+const {renderBlogPost} = require("./blog");
 
-const packager = new Packager("./public");
+async function route(store) {
+    const content$ = store.content();
+    return [
+        renderBlogPost(content$)
+    ];
+}
 
-const renderBlogPost = ({headline, author, text}) => {
+module.exports = {
+    host: "https://myhost.com",
+    contentPath: "content",
+    route$: route
+};
+
+```
+
+<p class="lead text-muted">Edit blog.js</p>
+
+```js
+
+const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
+
+const blogPostTemplate = ({css, headline, author, text}) => {
+    // css in js
+    const classes = css.style({
+        author: {
+            "font-style": "italic"
+        }
+    });
     return template`
         <html>
             <body>
                 <h1>${headline}</h1>
-                <p>By ${author.name}</p>
+                <p class=${classes.author}>By ${author.name}</p>
                 ${text}
             </body>
         </html>
     `;
 };
 
-// load markdown file and hydrate author from https://chen4119.me/about.html#about
-const source = jsonldMultiCast("blogpost.md");
+function renderBlogPost(content$) {
+    return content$
+    .pipe(pushSchemaOrgJsonLd((d) => toSchemaOrgJsonLd(d, "BlogPosting")))
+    .pipe(render(blogPostTemplate));
+}
 
-source
-.pipe(pushSchemaOrgJsonLd("BlogPosting")) // transform data to schema.org BlogPosting
-.pipe(render(renderBlogPost)) // render to HTML
-.subscribe(packager.route("blogpost.html")); // create blogpost.html
+module.exports = {
+    renderBlogPost: renderBlogPost
+};
 
-source.connect(); // start RxJs multicast
 ```
 
-<p class="lead text-muted">Your HTML file is created at public/blogpost.html</p>
+<p class="lead text-muted">Run sambal build to generate static html files in public folder</p>
+
+```bash
+npx sambal build
+```
+
+
+<p class="lead text-muted">Your first blog post, complete with schema.org metadata and collision free css class names, generated at public/blogs/hello-world/index.html.  </p>
 
 ```html
 <html>
   <head>
+    <style>
+      .author-0-0-1 {
+        font-style: italic;
+      }
+    </style>
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -60,9 +111,10 @@ source.connect(); // start RxJs multicast
           {
             "headline": "My first blogpost!",
             "description": "Starting my blog with Sambal",
-            "author": { "@id": "https://chen4119.me/about.html#about" },
+            "author": { "@id": "about#about" },
             "keywords": ["sambal", "jamstack"],
             "text": "<p>Hello world</p>\n",
+            "url": "https://myhost.com/blogs/hello-world",
             "@id": "_:1",
             "@context": "http://schema.org",
             "@type": "BlogPosting"
@@ -71,15 +123,14 @@ source.connect(); // start RxJs multicast
             "name": "Wan Chun Chen",
             "email": "chen4119@hotmail.com",
             "familyName": "Chen",
-            "gender": "Male",
             "givenName": "Wan Chun",
             "description": "Javascript developer.  Making linked data useful.",
             "sameAs": [
               "https://github.com/chen4119",
               "https://www.linkedin.com/in/wan-chun-chen-9a95a010"
             ],
-            "url": "https://chen4119.me/about.html",
-            "@id": "https://chen4119.me/about.html#about",
+            "url": "https://chen4119.me/about",
+            "@id": "about#about",
             "@type": "Person"
           }
         ]
@@ -88,7 +139,7 @@ source.connect(); // start RxJs multicast
   </head>
   <body>
     <h1>My first blogpost!</h1>
-    <p>By Wan Chun Chen</p>
+    <p class="author-0-0-1">By Wan Chun Chen</p>
     <p>Hello world</p>
   </body>
 </html>
