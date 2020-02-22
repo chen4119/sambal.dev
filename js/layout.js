@@ -1,6 +1,6 @@
 const {template} = require("sambal");
 
-const DocumentationEntryPath = "doc/intro/get-started";
+const DocumentationEntryPath = "/doc/guides/get-started";
 
 const renderLayout = ({head, nav, toc, content}) => {
     return template`
@@ -37,6 +37,9 @@ const renderNavBar = () => {
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="${DocumentationEntryPath}">Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
                     </li>
                 </ul>
             </div>

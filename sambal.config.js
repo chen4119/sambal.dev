@@ -1,8 +1,8 @@
 
-const {from} = require("rxjs");
 const fs = require("fs");
-const {renderDoc} = require("./js/doc");
-const {renderLandingPage} = require("./js/landing");
+const {doc$} = require("./js/doc");
+const {landingPage$} = require("./js/landing");
+const {aboutPage$} = require("./js/about");
 
 function readFile(src) {
     return new Promise((resolve, reject) => {
@@ -20,8 +20,9 @@ async function route(store) {
     const head = readFile("fragments/head.html");
     const content$ = store.content();
     return [
-        renderDoc(store, content$, head),
-        renderLandingPage(content$, head)
+        doc$(store, content$, head),
+        landingPage$(content$, head),
+        aboutPage$(content$, head)
     ];
 }
 

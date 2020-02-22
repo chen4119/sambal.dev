@@ -2,7 +2,7 @@
 headline: Json-ld and Schema.org
 description: Some description
 category: Guides
-order: 1
+order: 2
 ---
 
 # Schema.org

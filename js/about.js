@@ -2,7 +2,7 @@ const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("samb
 const {renderNavBar, renderContent} = require("./layout");
 const {filter, map, toArray} = require("rxjs/operators");
 
-const renderLanding = ({head, nav, headline, description, content}) => {
+const renderAbout = ({head, nav, content}) => {
     return template`
         <!doctype html>
         <html>
@@ -12,15 +12,7 @@ const renderLanding = ({head, nav, headline, description, content}) => {
             <body>
                 ${nav}
                 <div class="container main">
-                    <div class="text-center">
-                        <div class="container">
-                            <h1 class="display-3">${headline}</h1>
-                            <h3 class="text-muted">${description}</h3>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        ${content}
-                    </div>
+                    ${content}
                 </div>
             </body>
         </html>
@@ -29,7 +21,7 @@ const renderLanding = ({head, nav, headline, description, content}) => {
 
 function getRenderer(head) {
     return (props) => {
-        return renderLanding({
+        return renderAbout({
             ...props,
             head: head,
             nav: renderNavBar(),
@@ -40,10 +32,10 @@ function getRenderer(head) {
 
 function page$(content$, head) {
     return content$
-    .pipe(filter(d => d.url === "https://sambal.dev/landing"))
+    .pipe(filter(d => d.url === "https://sambal.dev/about"))
     .pipe(render(getRenderer(head)));
 }
 
 module.exports = {
-    landingPage$: page$
+    aboutPage$: page$
 };

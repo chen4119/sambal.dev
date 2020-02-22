@@ -34,12 +34,12 @@ touch blog.js
 <p class="lead text-muted">Edit sambal.config.js</p>
 
 ```js
-const {renderBlogPost} = require("./blog");
+const {blogPost$} = require("./blog");
 
 async function route(store) {
     const content$ = store.content();
     return [
-        renderBlogPost(content$)
+        blogPost$(content$)
     ];
 }
 
@@ -57,7 +57,7 @@ module.exports = {
 
 const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
 
-const blogPostTemplate = ({css, headline, author, text}) => {
+const renderBlogPost = ({css, headline, author, text}) => {
     // css in js
     const classes = css.style({
         author: {
@@ -75,14 +75,14 @@ const blogPostTemplate = ({css, headline, author, text}) => {
     `;
 };
 
-function renderBlogPost(content$) {
+function page$(content$) {
     return content$
     .pipe(pushSchemaOrgJsonLd((d) => toSchemaOrgJsonLd(d, "BlogPosting")))
-    .pipe(render(blogPostTemplate));
+    .pipe(render(renderBlogPost));
 }
 
 module.exports = {
-    renderBlogPost: renderBlogPost
+    blogPost$: page$
 };
 
 ```
