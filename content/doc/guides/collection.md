@@ -21,4 +21,34 @@ Users can index their data locally into collections for quick retrieval later.  
 </code>
 </pre>
 
-For example, you have a dataset
+For example, for your blog, you will need a collection of your blog posts sorted by latest timestamp.
+
+```js
+{
+        name: "latestBlogs",
+        sortBy: [{field: "dateCreated", order: "desc"}]
+}
+```
+
+Blog posts generally have a list of tags like so
+
+```js
+{
+        headline: "blog post 1",
+        keywords: ["tag1", "tag2"]
+},
+{
+        headline: "blog post 2",
+        keywords: ["tag1", "tag3"]
+},
+```
+
+You can easily group blog posts by keyword and sorted by latest timestamp with the collection below.  As such, "tag1" partition will contain both "blog post 1" and "blog post 2".  "tag2" partition will only contain "blog post 1" and "tag3" contain "blog post 2".
+
+```js
+{
+        name: "blogsByKeywords",
+        groupBy: "keywords",
+        sortBy: [{field: "dateCreated", order: "desc"}]
+}
+```

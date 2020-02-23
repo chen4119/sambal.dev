@@ -11,11 +11,11 @@ order: 2
 <pre>
 <code>
 {
-    page // Page count,
-    begin // Begin index count,
-    end // End index count,
-    items // Source data,
-    hasNext // Has next page?
+    page: number,       // Page count
+    begin: number,      // Begin index count
+    end: number,        // End index count
+    items: any[]        // Source data
+    hasNext: boolean    // Has next page?
 }
 </code>
 </pre>

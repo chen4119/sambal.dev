@@ -1,25 +1,20 @@
 ---
 headline: pushSchemaOrgJsonLd
-description: Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type
+description: Add schema.org type to the HTML document
 category: RxJs Operators
 order: 3
 ---
 
 ## pushSchemaOrgJsonLd
 
-<p class="lead">Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type</p>
+<p class="lead">Add schema.org type to the HTML document</p>
 
 ```ts
-pushSchemaOrgJsonLd(type: string, options: {field?: string, context?: any} = {})
+pushSchemaOrgJsonLd(transformer: (props: any) => any)
 ```
 
 __Parameters:__
 
-<span class="text-primary">__(Required) type:__</span> schema.org type
-
-<span class="text-primary">__(Optional) options.field:__</span> Transform json data from field
-
-<span class="text-primary">__(Optional) options.context:__</span> Json-ld context
-
+<span class="text-primary">__(Required) transformer:__</span> Transform user data into schema.org json-ld.  Typically done using toSchemaOrgJsonLd
 
 ### __Examples__
