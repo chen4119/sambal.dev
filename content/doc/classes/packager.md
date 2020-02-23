@@ -1,67 +1,46 @@
 ---
 headline: Packager
-description: Responsible for packaging your website into a destination folder.  The route function returns an observable to process your data stream into HTML files
+description: Bundle all &lt;script&gt; javascript files, add schema.org json-ld metadata and write resulting HTML document to public folder
 category: Classes
-order: 1
+order: 2
 ---
 
 ## Packager
 
-<p class="lead">Responsible for packaging your website into a destination folder.  The route function returns an observable to process your data stream into HTML files.  It expects the source data to have format</p>
+<p class="lead">Bundle all &lt;script&gt; javascript files, add schema.org json-ld metadata and write resulting HTML document to public folder</p>
 
-<pre>
-<code>
-{
-    data // Your data,
-    html // A Cheerio object with your rendered HTML
-}
-</code>
-</pre>
-
-With the Cheerio html, Packager will
-
-1. Find css links, minify it, hash it, copy it to destination folder
-2. Find js links, rollup, copy it to destination folder
-3. Add schema.org metadata, if any
-4. Write html file to route
 
 ```ts
-constructor(private dest: string, options = {})
+constructor(private obs$: Observable<SambalData>, private options: {prettyHtml?: boolean, bundle?: BundleFunction} = {})
 ```
 <p class="lead">Default option</p>
 <pre>
 <code>
 {
-    prettyHtml: true // prettify html
+    prettyHtml: true, // prettify HTML
+    bundle: async (srcFile: string, destFolder: string) => {
+        // do nothing
+        return [srcFile];
+    }
 }
 </code>
 </pre>
 
 __Parameters:__
 
-<span class="text-primary">__(Required) dest:__</span> Destination path.  All HTML and artifacts will be created here
+<span class="text-primary">__(Required) obs$:__</span> Rendered data observer
+
+<span class="text-primary">__(Optional) options.prettyHtml:__</span> Prettify Html flag.  Default to true
+
+<span class="text-primary">__(Optional) options.bundle:__</span> Implement your own bundle function.  sambal-cli uses webpack
+
+### __Public functions__
 
 ```ts
-route(template: string | ((props: any) => string)): Observer<any>
+deliver(): Promise<void>
 ```
 
-<p class="lead">Return observer to process your data stream into HTML files</p>
+<p class="lead">Observe data from obs$ and generate HTML documents</p>
 
-__Parameters:__
-
-<span class="text-primary">__(Required) template:__</span> An output filepath or function that return a filepath based on source data
-
-```ts
-copy(...sources: string[])
-```
-
-__Parameters:__
-
-<span class="text-primary">__(Required) sources:__</span> Copy source file or folder to destination path
-
-```ts
-clean()
-```
-<p class="lead">Delete all files in destination folder</p>
 
 ### __Examples__

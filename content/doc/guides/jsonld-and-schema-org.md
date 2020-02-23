@@ -11,9 +11,7 @@ order: 2
 
 Sambal provides a cli tool to automatically generate any schema.org type skeleton in yaml or json format with extra indication about which fields are required/recommended by Google.  Each type has more fields than you'll need.  You don't need to use every field but should try to populate the fields recommended by Google as those will most likely give your site better SEO.
 
-```js
-npm install sambal-cli -g
-
+```ShellSession
 sambal schema.org person ./person.yaml
 ```
 
