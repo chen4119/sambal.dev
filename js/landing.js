@@ -41,6 +41,10 @@ function getRenderer(head) {
 function page$(content$, head) {
     return content$
     .pipe(filter(d => d.url === "https://sambal.dev/landing"))
+    .pipe(map(d => {
+        d.url = "https://sambal.dev/index.html";
+        return d;
+    }))
     .pipe(render(getRenderer(head)));
 }
 
