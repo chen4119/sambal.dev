@@ -21,7 +21,7 @@ Users can index their data locally into collections for quick retrieval later.  
 </code>
 </pre>
 
-For example, for your blog, you will need a collection of your blog posts sorted by latest timestamp.
+For example, for your blog, you will need a collection of blog posts sorted by latest timestamp
 
 ```js
 {
@@ -30,7 +30,7 @@ For example, for your blog, you will need a collection of your blog posts sorted
 }
 ```
 
-Blog posts generally have a list of tags like so
+Also, blog post usually has a list of tags like so
 
 ```js
 {
@@ -43,7 +43,11 @@ Blog posts generally have a list of tags like so
 },
 ```
 
-You can easily group blog posts by keyword and sorted by latest timestamp with the collection below.  As such, "tag1" partition will contain both "blog post 1" and "blog post 2".  "tag2" partition will only contain "blog post 1" and "tag3" contain "blog post 2".
+You can create a collection of blog posts group by keyword and sort by latest timestamp with the example below.  Given the two blog posts above, the collection will have three partitions:
+
+1. "tag1" contain both "blog post 1" and "blog post 2"
+2. "tag2" will only contain "blog post 1"
+3. "tag3" will only contain "blog post 2"
 
 ```js
 {

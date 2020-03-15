@@ -1,18 +1,24 @@
 ---
 headline: Sambal
-description: A linked data static site generator
+description: Re-imagining what a static website can do
 ---
 
 # About
 
-<p class="lead text-muted">A static site generator that outputs linked data as well as HTML because you need more than just a fast website, you need to be discovered.  Sambal natively supports json-ld format, schema.org vocabulary and everything you would expect to generate production ready HTML.  Here is what you can do with Sambal:</p>
 
-1. #### Transform your data to schema.org metadata in json-ld format
+A static site generator that...
 
-2. #### Create boilerplate schema.org types
+1. Renders HTML using Javascript literal template
 
-3. #### Auto bundle &lt;script&gt; javascript file
+2. Renders schema.org json-ld metadata 
 
-4. #### Collision free css style class names
+3. Supports json-ld data format
 
-5. #### Group and sort your data into collections
+4. Supports CSS in JS
+
+5. Bundles Javascript automatically using Webpack
+
+6. Fetch, sort, group, transform data using RxJs
+
+Re-imagining what a static website can do
+

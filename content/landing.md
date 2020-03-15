@@ -1,18 +1,19 @@
 ---
 headline: Sambal
-description: A linked data static site generator
+description: Build fast and SEO friendly static sites
 ---
 
 ```ShellSession
 $ npm install --save-dev sambal-cli
+```
 
+<p class="lead topmargin">Write your first blog post</p>
+
+```ShellSession
 $ mkdir content/blogs
 
 $ touch content/blogs/hello-world.md
-
 ```
-
-<p class="lead text-muted">Edit content/blogs/hello-world.md</p>
 
 ```md
 ---
@@ -25,13 +26,11 @@ keywords: ["sambal", "jamstack"]
 Hello world
 ```
 
-```bash
+<p class="lead topmargin">Edit sambal.config.js</p>
+
+```ShellSession
 touch sambal.config.js
-
-touch blog.js
 ```
-
-<p class="lead text-muted">Edit sambal.config.js</p>
 
 ```js
 const {blogPost$} = require("./blog");
@@ -51,7 +50,11 @@ module.exports = {
 
 ```
 
-<p class="lead text-muted">Edit blog.js</p>
+<p class="lead topmargin">Edit blog.js</p>
+
+```ShellSession
+touch blog.js
+```
 
 ```js
 
@@ -87,14 +90,14 @@ module.exports = {
 
 ```
 
-<p class="lead text-muted">Run sambal build to generate static html files in public folder</p>
+<p class="lead topmargin">Run sambal to generate static html files</p>
 
 ```bash
 npx sambal build
 ```
 
 
-<p class="lead text-muted">Your first blog post, complete with schema.org metadata and collision free css class names, generated at public/blogs/hello-world/index.html.  </p>
+<p class="lead topmargin">Your first blog post, complete with schema.org metadata!  </p>
 
 ```html
 <html>

@@ -1,18 +1,18 @@
 ---
 headline: Rendering to HTML
-description: To render a json object to HTML, you just need to provide a render function with a props object as the only argument, inspired by React's render function
+description: Implement React style render functions to render data to HTML using plain old Javascript template literal
 category: Guides
 order: 3
 ---
 
 # Rendering to HTML
 
-To render a json object to HTML, you just need to provide a render function with a props object as the only argument, inspired by React's render function.  For example
+Implement React style render functions to render data to HTML using plain old Javascript template literal
 
 ```js
 
 const {of} = require("rxjs");
-const {render, template} = require("sambal-ssg");
+const {render, template, toHtml} = require("sambal");
 
 function renderer({title, message}) {
     return template`
@@ -32,7 +32,8 @@ of({
     message: 'Hello world'
 })
 .pipe(render(renderer))
-.subscribe(d => console.log(d.html.html()));
+.pipe(toHtml())
+.subscribe(html => console.log(html));
 
 // output:
 //
@@ -47,7 +48,7 @@ of({
 
 ```
 
-Just plain old Javascript template literal but with some powerful features built in.
+But with some powerful features
 
 __Render an array__
 

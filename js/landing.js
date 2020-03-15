@@ -15,7 +15,7 @@ const renderLanding = ({head, nav, headline, description, content}) => {
                     <div class="text-center">
                         <div class="container">
                             <h1 class="display-3">${headline}</h1>
-                            <h3 class="text-muted">${description}</h3>
+                            <h3>${description}</h3>
                         </div>
                     </div>
                     <div class="text-center">
