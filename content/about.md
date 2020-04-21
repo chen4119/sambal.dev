@@ -6,7 +6,7 @@ description: Re-imagining what a static website can do
 # About
 
 
-A static site generator that...
+Sambal bridges the divide between statically generated website and server rendered website.  Write once and decide later how you want to deploy it.  Sambal is also not opinionated about which UI library you use as long as it can be bundled into a web component.  Other exciting features offered by Sambal:
 
 1. Renders HTML using Javascript literal template
 
@@ -14,11 +14,8 @@ A static site generator that...
 
 3. Supports json-ld data format
 
-4. Supports CSS in JS
+4. CSS in JS
 
-5. Bundles Javascript automatically using Webpack
+5. Automatic Javascript bundling using Webpack
 
-6. Fetch, sort, group, transform data using RxJs
-
-Re-imagining what a static website can do
 

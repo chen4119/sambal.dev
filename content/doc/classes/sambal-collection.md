@@ -1,27 +1,24 @@
 ---
-headline: LinkedDataStore
-description: Index data from contentPath and content$ observable into user specified collections.  Auto resolve json-ld data
+headline: SambalCollection
+description: Index data from content$ observable into user specified collections
 category: Classes
 order: 1
 ---
 
-## LinkedDataStore
+## SambalCollection
 
-<p class="lead">Index data from contentPath and content$ observable into user specified collections.  Auto resolve json-ld data</p>
+<p class="lead">Index data from content$ observable into user specified collections</p>
 
 ```ts
-constructor(private host: string, private userOptions: StoreOptions = {})
+constructor(private collections: CollectionDef[], private userOptions: StoreOptions = {})
 ```
 
 __Parameters:__
 
-<span class="text-primary">__(Required) host:__</span> Domain host of the website, i.e. https://myhost.com
+<span class="text-primary">__(Required) collections:__</span> List of collection definitions
 
-<span class="text-primary">__(Optional) userOptions.contentPath:__</span> Local path to content folder.  Support markdown, yaml, and json files
+<span class="text-primary">__(Optional) userOptions.cacheFolder:__</span> Folder to store indexed data.  Default to ./.sambal
 
-<span class="text-primary">__(Optional) userOptions.content$:__</span> Content data observable.  Data can be either json or json-ld
-
-<span class="text-primary">__(Optional) userOptions.collections:__</span> List of collection definitions.
 
 <p class="lead">Collection schema</p>
 <pre>
@@ -37,16 +34,15 @@ __Parameters:__
 ### __Public functions__
 
 ```ts
-indexContent(): Promise<void>
+indexContent(content$): Promise<void>
 ```
 
 <p class="lead">Index data from contentPath and content$ observable into user specified collections</p>
 
-```ts
-content(): Observable<any>
-```
+__Parameters:__
 
-<p class="lead">Return observable of data from contentPath and content$</p>
+<span class="text-primary">__(Required) content$:__</span> Content data observable
+
 
 ```ts
 collection(name: string, partition?: object): Observable<any>

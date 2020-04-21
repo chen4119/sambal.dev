@@ -57,7 +57,7 @@ touch blog.js
 
 ```js
 
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd} = require("sambal");
+const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd, loadContent} = require("sambal");
 const {of} = require("rxjs");
 const {map} = require("rxjs/operators");
 
@@ -82,7 +82,9 @@ const renderBlogPost = ({css, headline, author, text}) => {
 
 function page$({path, params}) {
     return of(`./${path}.md`)
-    .pipe(loadJsonLd())
+    .pipe(loadJsonLd({
+        fetcher: (url) => loadContent(url)
+    }))
     .pipe(map(d => {
         d.url = path;
         return d;

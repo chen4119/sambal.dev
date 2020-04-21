@@ -13,13 +13,13 @@ Generate schema.org boilerplate type in yaml or json format.  A subset of the mo
 npx sambal schema.org <schema.org type> <output file> [-f, --full]
 ```
 
-Index content from contentPath or content$ into user defined collections
+Start dev server at http://localhost:3000 and reload browser if javascript changed
 
 ```ShellSession
-npx sambal index
+npx sambal serve
 ```
 
-Generate HTML documents from route$ observable
+Generate static HTML files for every link from the sitemap$ observable
 
 ```ShellSession
 npx sambal build

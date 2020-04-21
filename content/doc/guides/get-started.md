@@ -1,6 +1,6 @@
 ---
 headline: Get started
-description: Some description
+description: Get started
 category: Guides
 order: 1
 ---
@@ -14,26 +14,44 @@ npm install --save-dev sambal-cli
 ## Create sambal.config.js file
 
 ```js
-import {from} from "rxjs";
+const {from, of} = require("rxjs");
+const {render, template} = require("sambal");
 
-async function route(store) {
-    const content$ = store.content();
-    // return an observable (or array of observables) of rendered obj
+function sitemap() {
+    return from([
+        '/first-blog',
+    ]);
+}
+
+function render({path, params}) {
+    return of({headline: "hello world"})
+    .pipe(render(({headline}) => {
+        return template`
+            <html>
+                <body>
+                    <h1>${headline}</h1>
+                </body>
+            </html>
+        `;
+    }));
+}
+
+function sitemap() {
+    return from([
+        '/',
+        '/user/user123',
+    ]);
 }
 
 module.exports = {
-    host: "https://myhost.com",                // REQUIRED
-    contentPath: "content",                    // optional, root folder for your content.  Support markdown, yaml, or json format
-    content$: from([{                          // optional, content observable.  Allow user to pull json data from anywhere
-        headline:'Remove content',
-        url: 'https://remotehost.com/id'
-    }]),
-    collections: [{                            // optional, list of collection definitions
-        name: "blogsByAuthor",
-        groupBy: "author",
-        sortBy: [{field: "dateCreated", order: "desc"}]
-    }],
-    route$: route                              // REQUIRED, takes an instance of LinkedDataStore and returns an observable (or array of observables) of rendered obj
+    routes: [
+        {path: '/', render: render},                 // REQUIRED. Array of routes.  Path is an expressjs style path, render is a function of type ({path, params}) => Observable  
+        {path: '/user/:username', render: render}
+    ],
+    sitemap$: sitemap(),                             // REQUIRED.  Observable of all possible urls in your website.  
+    webpack: {
+        entry: './js/index.js'                       // OPTIONAL.  Bundle javascript using webpack.  Provide entry to webpack which can be string, array of strings, or an object
+    }
 };
 ```
 
@@ -45,13 +63,13 @@ npx sambal schema.org person person.yml
 npx sambal schema.org blogposting blogpost.yml
 ```
 
-## Index content into collections you defined
+## Start dev server at http://localhost:3000 and reload browser if javascript changed
 
 ```ShellSession
-npx sambal index
+npx sambal serve
 ```
 
-## Generate website into public folder
+## Generate static HTML documents into public folder
 
 ```ShellSession
 npx sambal build

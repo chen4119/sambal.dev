@@ -2,10 +2,10 @@
 headline: render
 description: Render data to HTML
 category: RxJs Operators
-order: 4
+order: 6
 ---
 
-## setHtmlHeadMeta
+## render
 
 <p class="lead">Render data to HTML.  Data will be passed in as props for the render function</p>
 
