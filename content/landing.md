@@ -10,9 +10,7 @@ $ npm install --save-dev sambal-cli
 <p class="lead topmargin">Write your first blog post</p>
 
 ```ShellSession
-$ mkdir content/blogs
-
-$ touch content/blogs/hello-world.md
+$ touch first-blog.md
 ```
 
 ```md
@@ -34,18 +32,19 @@ touch sambal.config.js
 
 ```js
 const {blogPost$} = require("./blog");
+const {from} = require("rxjs");
 
-async function route(store) {
-    const content$ = store.content();
-    return [
-        blogPost$(content$)
-    ];
+function sitemap() {
+    return from([
+        '/first-blog',
+    ]);
 }
 
 module.exports = {
-    host: "https://myhost.com",
-    contentPath: "content",
-    route$: route
+    routes: [
+        {path: '/:file', render: blogPost$}
+    ],
+    sitemap$: sitemap()
 };
 
 ```
@@ -58,7 +57,9 @@ touch blog.js
 
 ```js
 
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
+const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd} = require("sambal");
+const {of} = require("rxjs");
+const {map} = require("rxjs/operators");
 
 const renderBlogPost = ({css, headline, author, text}) => {
     // css in js
@@ -78,8 +79,14 @@ const renderBlogPost = ({css, headline, author, text}) => {
     `;
 };
 
-function page$(content$) {
-    return content$
+
+function page$({path, params}) {
+    return of(`./${path}.md`)
+    .pipe(loadJsonLd())
+    .pipe(map(d => {
+        d.url = path;
+        return d;
+    }))
     .pipe(pushSchemaOrgJsonLd((d) => toSchemaOrgJsonLd(d, "BlogPosting")))
     .pipe(render(renderBlogPost));
 }

@@ -1,13 +1,7 @@
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
+const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd} = require("sambal");
 const {renderLayout, renderNavBar, renderContent} = require("./layout");
-const {from} = require("rxjs");
-const {filter, map, toArray} = require("rxjs/operators");
-const url = require("url");
-
-const CATEGORY_GUIDE = "Guides";
-const CATEGORY_RXJS_OPERATOR = "RxJs Operators";
-const CATEGORY_CLASS = "Classes";
-const CATEGORY_CLI = "CLI";
+const {of} = require("rxjs");
+const {map} = require("rxjs/operators");
 
 const renderTOC = async (css, toc, pageId) => {
     const classes = css.style({
@@ -31,7 +25,7 @@ const renderTOC = async (css, toc, pageId) => {
                     <ul class="nav flex-column">
                         ${group.items.map(item => template`
                             <li class="nav-item">
-                                <a class="${item.url === pageId ? classes.active : classes.nonactive}" href="${url.parse(item.url).pathname}">${item.headline}</a>
+                                <a class="${item.url === pageId ? classes.active : classes.nonactive}" href="${item.url}">${item.headline}</a>
                             </li>
                         `)}
                     </ul>
@@ -52,27 +46,16 @@ function getRenderer(head, toc) {
     };
 }
 
-function getCategory(category, obs$) {
-    return obs$
-    .pipe(toArray())
-    .pipe(map(items => ({category: category, items: items})))
-    .toPromise();
-}
-
-function getTOC(store) {
-    return [
-        getCategory(CATEGORY_GUIDE, store.collection("docs", {category: CATEGORY_GUIDE})),
-        getCategory(CATEGORY_RXJS_OPERATOR, store.collection("docs", {category: CATEGORY_RXJS_OPERATOR})),
-        getCategory(CATEGORY_CLASS, store.collection("docs", {category: CATEGORY_CLASS})),
-        getCategory(CATEGORY_CLI, store.collection("docs", {category: CATEGORY_CLI}))
-    ];
-}
-
-function page$(store, content$, head) {
-    const toc = getTOC(store);
-    return content$
-    .pipe(filter(d => d.url.startsWith("https://sambal.dev/doc")))
-    .pipe(render(getRenderer(head, toc)));
+function page$(head, toc) {
+    return ({path, params}) => {
+        return of(`./content/${path}.md`)
+        .pipe(loadJsonLd())
+        .pipe(map(d => {
+            d.url = path;
+            return d;
+        }))
+        .pipe(render(getRenderer(head, toc)))
+    };
 }
 
 module.exports = {

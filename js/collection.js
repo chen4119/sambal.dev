@@ -1,0 +1,26 @@
+const shelljs = require("shelljs");
+const {from, forkJoin, of} = require("rxjs");
+const {map, filter, mergeMap} = require("rxjs/operators");
+const {SambalCollection, loadJsonLd} = require("sambal");
+const {collections} = require("./constants");
+
+const docs = shelljs.ls("-R", "./content/doc");
+const content$ = from(docs)
+.pipe(filter(uri => uri.endsWith(".md")))
+.pipe(mergeMap(uri => forkJoin({
+    url: of(`/doc/${uri.substring(0, uri.length - 3)}`),
+    data: of(`./content/doc/${uri}`).pipe(loadJsonLd())
+})))
+.pipe(map(d => ({
+    url: d.url,
+    ...d.data
+})));
+
+(async () => {
+    try {
+        const indexer = new SambalCollection(content$, collections);
+        await indexer.indexContent();
+    } catch (e) {
+        console.log(e);
+    }
+})();

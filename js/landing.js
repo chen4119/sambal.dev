@@ -1,6 +1,7 @@
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
+const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd} = require("sambal");
 const {renderNavBar, renderContent} = require("./layout");
-const {filter, map, toArray} = require("rxjs/operators");
+const {of} = require("rxjs");
+const {map} = require("rxjs/operators");
 
 const renderLanding = ({head, nav, headline, description, content}) => {
     return template`
@@ -38,14 +39,16 @@ function getRenderer(head) {
     };
 }
 
-function page$(content$, head) {
-    return content$
-    .pipe(filter(d => d.url === "https://sambal.dev/landing"))
-    .pipe(map(d => {
-        d.url = "https://sambal.dev/index.html";
-        return d;
-    }))
-    .pipe(render(getRenderer(head)));
+function page$(head) {
+    return ({path, params}) => {
+        return of("content/landing.md")
+        .pipe(loadJsonLd())
+        .pipe(map(d => {
+            d.url = path;
+            return d;
+        }))
+        .pipe(render(getRenderer(head)));
+    };
 }
 
 module.exports = {
