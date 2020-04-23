@@ -126,14 +126,12 @@ npx sambal build
             "author": { "@id": "about#about" },
             "keywords": ["sambal", "jamstack"],
             "text": "<p>Hello world</p>\n",
-            "url": "https://myhost.com/blogs/hello-world",
             "@id": "_:1",
             "@context": "http://schema.org",
             "@type": "BlogPosting"
           },
           {
             "name": "Wan Chun Chen",
-            "email": "chen4119@hotmail.com",
             "familyName": "Chen",
             "givenName": "Wan Chun",
             "description": "Javascript developer.  Making linked data useful.",
