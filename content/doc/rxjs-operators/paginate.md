@@ -2,7 +2,7 @@
 headline: paginate
 description: Use bufferCount to break a stream of data into pages of certain size.  Paginate will keep track of the number of pages, the begin and end index count of the items in the page
 category: RxJs Operators
-order: 4
+order: 3
 ---
 
 ## paginate

@@ -63,9 +63,8 @@ function getTOC(store) {
     ];
 }
 
-const store = new SambalCollection(null, collections);
+const store = new SambalCollection(collections);
 const toc = getTOC(store);
-store.start();
 
 module.exports = {
     routes: [
@@ -73,8 +72,5 @@ module.exports = {
         {path: '/about', render: aboutPage$(head)},
         {path: '/doc/:category/:file', render: doc$(head, toc)}
     ],
-    sitemap$: sitemap(),
-    webpack: {
-        entry: './js/index.js'
-    }
+    sitemap$: sitemap()
 };

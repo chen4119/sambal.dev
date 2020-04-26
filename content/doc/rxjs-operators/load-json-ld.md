@@ -2,7 +2,7 @@
 headline: loadJsonLd
 description: Load json-ld data from markdown, yaml, json file or http url
 category: RxJs Operators
-order: 3
+order: 2
 ---
 
 ## loadJsonLd

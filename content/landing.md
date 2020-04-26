@@ -4,7 +4,7 @@ description: Build fast and SEO friendly static sites
 ---
 
 ```ShellSession
-$ npm install --save-dev sambal-cli
+$ npm install --save-dev sambal-cli sambal webpack
 ```
 
 <p class="lead topmargin">Write your first blog post</p>
@@ -56,7 +56,6 @@ touch blog.js
 ```
 
 ```js
-
 const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd, loadContent} = require("sambal");
 const {of} = require("rxjs");
 const {map} = require("rxjs/operators");

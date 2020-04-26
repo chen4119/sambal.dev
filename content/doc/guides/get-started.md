@@ -8,7 +8,7 @@ order: 1
 ## Install
 
 ```ShellSession
-npm install --save-dev sambal-cli
+npm install --save-dev sambal-cli sambal webpack
 ```
 
 ## Create sambal.config.js file
@@ -48,10 +48,7 @@ module.exports = {
         {path: '/', render: render},                 // REQUIRED. Array of routes.  Path is an expressjs style path, render is a function of type ({path, params}) => Observable  
         {path: '/user/:username', render: render}
     ],
-    sitemap$: sitemap(),                             // REQUIRED.  Observable of all possible urls in your website.  
-    webpack: {
-        entry: './js/index.js'                       // OPTIONAL.  Bundle javascript using webpack.  Provide entry to webpack which can be string, array of strings, or an object
-    }
+    sitemap$: sitemap()                              // REQUIRED.  Observable of all possible urls in your website.  
 };
 ```
 

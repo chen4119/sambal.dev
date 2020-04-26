@@ -2,7 +2,7 @@
 headline: toSchemaOrgJsonLd
 description: Transform source json data into the specified schema.org json-ld type, removing any fields that are not part of the schema or has invalid type
 category: RxJs Operators
-order: 8
+order: 7
 ---
 
 ## pushSchemaOrgJsonLd

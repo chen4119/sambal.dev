@@ -2,7 +2,7 @@
 headline: pushSchemaOrgJsonLd
 description: Add schema.org type to the HTML document
 category: RxJs Operators
-order: 5
+order: 4
 ---
 
 ## pushSchemaOrgJsonLd

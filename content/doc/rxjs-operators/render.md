@@ -2,7 +2,7 @@
 headline: render
 description: Render data to HTML
 category: RxJs Operators
-order: 6
+order: 5
 ---
 
 ## render

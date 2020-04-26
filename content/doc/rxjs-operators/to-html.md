@@ -2,7 +2,7 @@
 headline: toHtml
 description: Need to be call after rendering.  Return the rendered HTML string
 category: RxJs Operators
-order: 7
+order: 6
 ---
 
 ## toHtml

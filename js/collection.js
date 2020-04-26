@@ -18,8 +18,8 @@ const content$ = from(docs)
 
 (async () => {
     try {
-        const indexer = new SambalCollection(content$, collections);
-        await indexer.indexContent();
+        const indexer = new SambalCollection(collections);
+        await indexer.indexContent(content$);
     } catch (e) {
         console.log(e);
     }

@@ -9,10 +9,10 @@ order: 2
 
 [Schema.org](https://schema.org/) is a set of schemas for structured data markup on webpages.  It was started by Google, Yahoo, Microsoft and Yandex in 2011.  Many high traffic sites like Linkedin, AllRecipes, IMDb, Wikipedia, etc. are already using it.  It's the metadata that powers virtual assistants, events and flight reminders in your e-mail, and the featured search results on Google.  It can be encoded in many formats such as rdf, microdata and json-ld.
 
-Sambal provides a cli tool to automatically generate any schema.org type skeleton in yaml or json format with extra indication about which fields are required/recommended by Google.  Each type has more fields than you'll need.  You don't need to use every field but should try to populate the fields recommended by Google as those will most likely give your site better SEO.
+Sambal CLI provides a command to automatically generate any schema.org type skeleton in yaml or json format with extra indication about which fields are required/recommended by Google.  Each type will have more fields than you'll ever need do no need to feel bad if you're just using a small subset.  You should try to populate the fields recommended by Google as those will most likely give your site better SEO.
 
 ```ShellSession
-sambal schema.org person ./person.yaml
+npx sambal schema.org person ./person.yaml
 ```
 
 will output
