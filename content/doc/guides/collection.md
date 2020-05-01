@@ -2,7 +2,7 @@
 headline: Collection
 description: Group and sort data into collection
 category: Guides
-order: 4
+order: 5
 ---
 
 # Collection

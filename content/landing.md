@@ -1,155 +1,44 @@
 ---
 headline: Sambal
-description: Build fast and SEO friendly static sites
+description: A static site generator based on RxJs and linked data
 ---
 
 ```ShellSession
-$ npm install --save-dev sambal-cli sambal webpack
+$ npm install --save-dev sambal
 ```
 
-<p class="lead topmargin">Write your first blog post</p>
-
-```ShellSession
-$ touch first-blog.md
-```
-
-```md
----
-headline: My first blogpost!
-description: Starting my blog with Sambal
-author:
-    "@id": https://chen4119.me/about.html#about
-keywords: ["sambal", "jamstack"]
----
-Hello world
-```
-
-<p class="lead topmargin">Edit sambal.config.js</p>
-
-```ShellSession
-touch sambal.config.js
-```
+<p class="lead topmargin">Load json-ld from URL</p>
 
 ```js
-const {blogPost$} = require("./blog");
 const {from} = require("rxjs");
+const {loadJsonLd} = require("sambal");
 
-function sitemap() {
-    return from([
-        '/first-blog',
-    ]);
-}
-
-module.exports = {
-    routes: [
-        {path: '/:file', render: blogPost$}
-    ],
-    sitemap$: sitemap()
-};
-
+from(['https://www.imdb.com/title/tt1843866'])
+.pipe(loadJsonLd());
 ```
 
-<p class="lead topmargin">Edit blog.js</p>
-
-```ShellSession
-touch blog.js
-```
+<p class="lead topmargin">Render schema.org metadata and HTML</p>
 
 ```js
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd, loadContent} = require("sambal");
+const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
 const {of} = require("rxjs");
-const {map} = require("rxjs/operators");
 
-const renderBlogPost = ({css, headline, author, text}) => {
-    // css in js
-    const classes = css.style({
-        author: {
-            "font-style": "italic"
-        }
-    });
+of({
+    "familyName": "Smith",
+    "givenName": "John",
+    "description": "Making linked data useful",
+    "sameAs": [
+        "https://github.com/johnny123",
+    ]
+})
+.pipe(pushSchemaOrgJsonLd((d) => toSchemaOrgJsonLd(d, "Person"))) // add schema.org Person
+.pipe(render(({familyName, givenName}) => {
     return template`
         <html>
             <body>
-                <h1>${headline}</h1>
-                <p class=${classes.author}>By ${author.name}</p>
-                ${text}
+                <h1>I am ${givenName} ${familyName}</h1>
             </body>
         </html>
     `;
-};
-
-
-function page$({path, params}) {
-    return of(`./${path}.md`)
-    .pipe(loadJsonLd({
-        fetcher: (url) => loadContent(url)
-    }))
-    .pipe(map(d => {
-        d.url = path;
-        return d;
-    }))
-    .pipe(pushSchemaOrgJsonLd((d) => toSchemaOrgJsonLd(d, "BlogPosting")))
-    .pipe(render(renderBlogPost));
-}
-
-module.exports = {
-    blogPost$: page$
-};
-
-```
-
-<p class="lead topmargin">Run sambal to generate static html files</p>
-
-```bash
-npx sambal build
-```
-
-
-<p class="lead topmargin">Your first blog post, complete with schema.org metadata!  </p>
-
-```html
-<html>
-  <head>
-    <style>
-      .author-0-0-1 {
-        font-style: italic;
-      }
-    </style>
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@graph": [
-          {
-            "headline": "My first blogpost!",
-            "description": "Starting my blog with Sambal",
-            "author": { "@id": "about#about" },
-            "keywords": ["sambal", "jamstack"],
-            "text": "<p>Hello world</p>\n",
-            "@id": "_:1",
-            "@context": "http://schema.org",
-            "@type": "BlogPosting"
-          },
-          {
-            "name": "Wan Chun Chen",
-            "familyName": "Chen",
-            "givenName": "Wan Chun",
-            "description": "Javascript developer.  Making linked data useful.",
-            "sameAs": [
-              "https://github.com/chen4119",
-              "https://www.linkedin.com/in/wan-chun-chen-9a95a010"
-            ],
-            "url": "https://chen4119.me/about",
-            "@id": "about#about",
-            "@type": "Person"
-          }
-        ]
-      }
-    </script>
-  </head>
-  <body>
-    <h1>My first blogpost!</h1>
-    <p class="author-0-0-1">By Wan Chun Chen</p>
-    <p>Hello world</p>
-  </body>
-</html>
+}));
 ```

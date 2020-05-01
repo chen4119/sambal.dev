@@ -2,7 +2,7 @@
 headline: Rendering to HTML
 description: Implement React style render functions to render data to HTML using plain old Javascript template literal
 category: Guides
-order: 3
+order: 2
 ---
 
 # Rendering to HTML
