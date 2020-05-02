@@ -3,7 +3,19 @@ const {renderNavBar, renderContent} = require("./layout");
 const {of} = require("rxjs");
 const {map} = require("rxjs/operators");
 
-const renderAbout = ({head, nav, content}) => {
+const renderAbout = ({css, head, nav, content}) => {
+    const classes = css.style({
+        about: {
+            '& table, th, td': {
+                border: '1px solid black',
+                padding: '6px 13px'
+            },
+            '& table': {
+                'margin-top': '3rem',
+                'margin-bottom': '3rem'
+            }
+        }
+    });
     return template`
         <!doctype html>
         <html>
@@ -12,7 +24,7 @@ const renderAbout = ({head, nav, content}) => {
             </head>
             <body>
                 ${nav}
-                <div class="container main">
+                <div class="container main ${classes.about}">
                     ${content}
                 </div>
             </body>
