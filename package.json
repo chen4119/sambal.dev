@@ -22,7 +22,7 @@
         "bootstrap": "4.3.1",
         "css-loader": "3.4.0",
         "file-loader": "5.0.2",
-        "jquery": "3.4.1",
+        "jquery": "3.5.0",
         "prismjs": "1.17.1",
         "sambal": "0.0.32",
         "sambal-cli": "0.0.33",
