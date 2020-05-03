@@ -1,13 +1,13 @@
 ---
 headline: loadJsonLd
 description: Load json-ld data from markdown, yaml, json file or http url
+codeRepository: https://github.com/chen4119/sambal
+codeSampleType: code snippet
+programmingLanguage: Typescript
+runtimePlatform: Node.js 8+
 category: RxJs Operators
 order: 2
 ---
-
-## loadJsonLd
-
-<p class="lead">Load json-ld data from markdown, yaml, json file or http url</p>
 
 ```ts
 function loadJsonLd(hydrateOptions?: {

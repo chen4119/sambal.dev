@@ -1,6 +1,10 @@
 ---
 headline: SambalCollection
 description: Index data from content$ observable into user specified collections
+codeRepository: https://github.com/chen4119/sambal
+codeSampleType: code snippet
+programmingLanguage: Typescript
+runtimePlatform: Node.js 8+
 category: Classes
 order: 1
 ---

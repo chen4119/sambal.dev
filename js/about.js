@@ -47,10 +47,7 @@ function page$(head) {
     return ({path, params}) => {
         return of("content/about.md")
         .pipe(loadJsonLd())
-        .pipe(map(d => {
-            d.url = path;
-            return d;
-        }))
+        .pipe(pushSchemaOrgJsonLd(d => toSchemaOrgJsonLd(d, "AboutPage")))
         .pipe(render(getRenderer(head)));
     };
 }

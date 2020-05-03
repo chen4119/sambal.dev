@@ -35,26 +35,40 @@ const renderTOC = async (css, toc, pageId) => {
     `;
 };
 
-function getRenderer(head, toc) {
+const renderDoc = ({headline, description, text}) => {
+    return template`
+        <h2>${headline}</h2>
+        <p class="lead">${description}</p>
+        ${text}
+    `;
+};
+
+function getRenderer(head, toc, contentRenderer) {
     return (props) => {
         return renderLayout({
             head: head,
             nav: renderNavBar(),
             toc: renderTOC(props.css, toc, props.url),
-            content: renderContent(props)
+            content: contentRenderer(props)
         });
     };
 }
 
 function page$(head, toc) {
     return ({path, params}) => {
-        return of(`./content/${path}.md`)
+        const loader = of(`./content/${path}.md`)
         .pipe(loadJsonLd())
+        .pipe(pushSchemaOrgJsonLd(d => toSchemaOrgJsonLd(d, "SoftwareSourceCode")))
         .pipe(map(d => {
             d.url = path;
             return d;
-        }))
-        .pipe(render(getRenderer(head, toc)))
+        }));
+
+        if (path.indexOf("/guides/") > 0) {
+            return loader.pipe(render(getRenderer(head, toc, renderContent)));
+        } else {
+            return loader.pipe(render(getRenderer(head, toc, renderDoc)));
+        }
     };
 }
 

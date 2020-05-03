@@ -43,10 +43,6 @@ function page$(head) {
     return ({path, params}) => {
         return of("content/landing.md")
         .pipe(loadJsonLd())
-        .pipe(map(d => {
-            d.url = path;
-            return d;
-        }))
         .pipe(render(getRenderer(head)));
     };
 }

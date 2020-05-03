@@ -23,6 +23,7 @@ function sitemap() {
     ]);
 }
 
+// render function returns an observable
 function render({path, params}) {
     return of({headline: "hello world"})
     .pipe(render(({headline}) => {
@@ -45,7 +46,7 @@ function sitemap() {
 
 module.exports = {
     routes: [
-        {path: '/', render: render},                 // REQUIRED. Array of routes.  Path is an expressjs style path, render is a function of type ({path, params}) => Observable  
+        {path: '/', render: render},                 // REQUIRED. Array of routes with expressjs style path and a render function  
         {path: '/user/:username', render: render}
     ],
     sitemap$: sitemap()                              // REQUIRED.  Observable of all possible urls in your website.  

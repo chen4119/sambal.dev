@@ -37,6 +37,7 @@ const CATEGORY_GUIDE = "Guides";
 const CATEGORY_RXJS_OPERATOR = "RxJs Operators";
 const CATEGORY_CLASS = "Classes";
 const CATEGORY_CLI = "CLI";
+const CATEGORY_FUNCTIONS = "Functions";
 
 function getCategory(category, obs$) {
     return obs$
@@ -58,6 +59,7 @@ function getTOC(store) {
     return [
         getCategory(CATEGORY_GUIDE, store.collection("docs", {category: CATEGORY_GUIDE})),
         getCategory(CATEGORY_RXJS_OPERATOR, store.collection("docs", {category: CATEGORY_RXJS_OPERATOR})),
+        getCategory(CATEGORY_FUNCTIONS, store.collection("docs", {category: CATEGORY_FUNCTIONS})),
         getCategory(CATEGORY_CLASS, store.collection("docs", {category: CATEGORY_CLASS})),
         getCategory(CATEGORY_CLI, store.collection("docs", {category: CATEGORY_CLI}))
     ];

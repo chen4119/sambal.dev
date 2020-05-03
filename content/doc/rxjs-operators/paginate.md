@@ -1,13 +1,16 @@
 ---
 headline: paginate
-description: Use bufferCount to break a stream of data into pages of certain size.  Paginate will keep track of the number of pages, the begin and end index count of the items in the page
+description: Use bufferCount to break a stream of data into pages of certain size.  Paginate will keep track of the number of pages, the begin and end index count of the items in the page.  Source data passed to paginate needs to be an array. 
+codeRepository: https://github.com/chen4119/sambal
+codeSampleType: code snippet
+programmingLanguage: Typescript
+runtimePlatform: Node.js 8+
 category: RxJs Operators
 order: 3
 ---
 
-## paginate
+Output data will have the following schema
 
-<p class="lead">Use bufferCount to break a stream of data into pages of certain size.  Paginate will keep track of the number of pages, the begin and end index count of the items in the page.  Source data passed to paginate needs to be an array and the resulting data will have the following schema</p>
 <pre>
 <code>
 {

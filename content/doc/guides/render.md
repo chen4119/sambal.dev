@@ -1,27 +1,41 @@
 ---
 headline: Rendering to HTML
-description: Implement React style render functions to render data to HTML using plain old Javascript template literal
+description: React style render functions to render data to HTML using plain old Javascript template literal
 category: Guides
 order: 2
 ---
 
 # Rendering to HTML
 
-Implement React style render functions to render data to HTML using plain old Javascript template literal
+If you've worked with React before, you're already familiar with the render function
 
 ```js
+function render(props) {
+    return (
+        // your html
+    );
+}
+```
 
+It's simple, composable, and reusable.  That's why Sambal also used the same idea for it's own rendering to HTML but implemented with plain old Javascript template literal.  An instance of local css is injected into the props to allow local CSS stylesheets. Some examples:
+
+```js
 const {of} = require("rxjs");
 const {render, template, toHtml} = require("sambal");
 
-function renderer({title, message}) {
+function renderer({css, title, message}) {
+    const classes = css.style({
+        message: {
+            "font-style": "italic"
+        }
+    });
     return template`
         <html>
             <head>
                 <title>${title}</title>
             </head>
             <body>
-                <h1>${message}</h1>
+                <h1 class="${classes.message}">${message}</h1>
             </body>
         </html>
     `;
@@ -40,9 +54,13 @@ of({
 // <html>
 //     <head>
 //         <title>My first page</title>
+//         <style>.message-0-0-1 {
+//             font-style: italic;
+//         }       
+//         </style>
 //     </head>
 //     <body>
-//         <h1>Hello world</h1>
+//         <h1 class="message-0-0-1">Hello world</h1>
 //     </body>
 // </html>
 

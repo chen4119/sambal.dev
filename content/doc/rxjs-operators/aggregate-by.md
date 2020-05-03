@@ -1,13 +1,13 @@
 ---
 headline: aggregateBy
 description: Aggregate by specified field
+codeRepository: https://github.com/chen4119/sambal
+codeSampleType: code snippet
+programmingLanguage: Typescript
+runtimePlatform: Node.js 8+
 category: RxJs Operators
 order: 1
 ---
-
-## aggregateBy
-
-<p class="lead">Aggregate by specified field</p>
 
 ```ts
 aggregateBy(field: string)

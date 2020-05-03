@@ -1,13 +1,13 @@
 ---
 headline: render
 description: Render data to HTML
+codeRepository: https://github.com/chen4119/sambal
+codeSampleType: code snippet
+programmingLanguage: Typescript
+runtimePlatform: Node.js 8+
 category: RxJs Operators
 order: 5
 ---
-
-## render
-
-<p class="lead">Render data to HTML.  Data will be passed in as props for the render function</p>
 
 ```ts
 render(renderer: (props: any) => Promise<string>)
