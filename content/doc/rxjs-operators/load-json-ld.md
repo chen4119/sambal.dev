@@ -6,7 +6,7 @@ codeSampleType: code snippet
 programmingLanguage: Typescript
 runtimePlatform: Node.js 8+
 category: RxJs Operators
-order: 2
+order: 3
 ---
 
 ```ts

@@ -6,7 +6,7 @@ codeSampleType: code snippet
 programmingLanguage: Typescript
 runtimePlatform: Node.js 8+
 category: RxJs Operators
-order: 3
+order: 4
 ---
 
 Output data will have the following schema

@@ -44,12 +44,28 @@ function sitemap() {
     ]);
 }
 
+function asset() {
+    return from([
+        {
+            src: './images/image1.jpg',  // Path to your image
+            dest: 'images/image1.webp',  // Transform src image to webp format and copy to destination path.  Supported formats are webp, jpg, png
+            responsive: [
+                {
+                    srcset: 'images/image1-480.png 480w, images/image1-320.png 320w' // Transform src image to png and resize to 480w and 320w
+                }
+            ]
+        }
+    ]);
+}
+
 module.exports = {
+    baseUrl: 'https://example.com'                   // REQUIRED
     routes: [
         {path: '/', render: render},                 // REQUIRED. Array of routes with expressjs style path and a render function  
         {path: '/user/:username', render: render}
     ],
-    sitemap$: sitemap()                              // REQUIRED.  Observable of all possible urls in your website.  
+    sitemap$: sitemap()                              // REQUIRED.  Observable of all possible urls in your website.
+    asset$: asset()                                  // OPTIONAL.  Observable of your images
 };
 ```
 

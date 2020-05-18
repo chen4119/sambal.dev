@@ -1,4 +1,4 @@
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd} = require("sambal");
+const {template, render, pushJsonLd, toSchemaOrgJsonLd, loadJsonLd} = require("sambal");
 const {renderLayout, renderNavBar, renderContent} = require("./layout");
 const {of} = require("rxjs");
 const {map} = require("rxjs/operators");
@@ -58,7 +58,7 @@ function page$(head, toc) {
     return ({path, params}) => {
         const loader = of(`./content/${path}.md`)
         .pipe(loadJsonLd())
-        .pipe(pushSchemaOrgJsonLd(d => toSchemaOrgJsonLd(d, "SoftwareSourceCode")))
+        .pipe(pushJsonLd(d => toSchemaOrgJsonLd(d, "SoftwareSourceCode")))
         .pipe(map(d => {
             d.url = path;
             return d;

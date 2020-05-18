@@ -20,7 +20,7 @@ from(['https://www.imdb.com/title/tt1843866'])
 <p class="lead topmargin">Render schema.org metadata and HTML</p>
 
 ```js
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
+const {template, render, pushJsonLd, toSchemaOrgJsonLd} = require("sambal");
 const {of} = require("rxjs");
 
 of({
@@ -31,7 +31,7 @@ of({
         "https://github.com/johnny123",
     ]
 })
-.pipe(pushSchemaOrgJsonLd((d) => toSchemaOrgJsonLd(d, "Person"))) // add schema.org Person
+.pipe(pushJsonLd((d) => toSchemaOrgJsonLd(d, "Person"))) // add schema.org Person
 .pipe(render(({familyName, givenName}) => {
     return template`
         <html>

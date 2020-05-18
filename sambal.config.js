@@ -69,6 +69,7 @@ const store = new SambalCollection(collections);
 const toc = getTOC(store);
 
 module.exports = {
+    baseUrl: 'https://sambal.dev',
     routes: [
         {path: '/', render: landingPage$(head)},
         {path: '/about', render: aboutPage$(head)},

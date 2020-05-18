@@ -9,18 +9,18 @@ Frontend developers are spoilt for choices when building a website.  That's both
 
 The guiding principle for Sambal was to build a static site generator around standardized well known concepts to minimize the need to introduce Sambal specific knowledge.  In summary, this is how Sambal differs from other static site generators:
 
-|               | Sambal                        | Others                                        |
-|---------------|-------------------------------|-----------------------------------------------|
-| Config        | 2, sitemap$ and routes        | Many config options                           |
-| Convention    | schema.org json-ld            | Proprietary variables and directory structure |
-| Extensibility | RxJs observable and operators | Proprietary API                               |
-| Template      | Javascript template literal   | Too many to list                              |
-| Web component | HTML5 custom element          | Various                                       |
+|               | Sambal                                | Others                                        |
+|---------------|---------------------------------------|-----------------------------------------------|
+| Config        | 4, baseUrl, sitemap$, routes, asset$  | Many config options                           |
+| Convention    | schema.org json-ld                    | Proprietary variables and directory structure |
+| Extensibility | RxJs observable and operators         | Proprietary API                               |
+| Template      | Javascript template literal           | Too many to list                              |
+| Web component | HTML5 custom element                  | Various                                       |
 
 Taking pride in NOT introducing anything proprietary.  Sambal is essentially a set of custom [RxJs](https://rxjs-dev.firebaseapp.com/) operators to help transform any data into HTML and schema.org metadata.  Rendering a HTML document takes just a few lines of code.
 
 ```js
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
+const {template, render, pushJsonLd, toSchemaOrgJsonLd} = require("sambal");
 const {of} = require("rxjs");
 
 of({
@@ -31,7 +31,7 @@ of({
         "https://github.com/johnny123",
     ]
 })
-.pipe(pushSchemaOrgJsonLd((d) => toSchemaOrgJsonLd(d, "Person"))) // add schema.org Person
+.pipe(pushJsonLd((d) => toSchemaOrgJsonLd(d, "Person"))) // add schema.org Person
 .pipe(render(({familyName, givenName}) => {
     return template`
         <html>

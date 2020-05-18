@@ -1,4 +1,4 @@
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd, loadJsonLd} = require("sambal");
+const {template, render, loadJsonLd} = require("sambal");
 const {renderNavBar, renderContent} = require("./layout");
 const {of} = require("rxjs");
 const {map} = require("rxjs/operators");

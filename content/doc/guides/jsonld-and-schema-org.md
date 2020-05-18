@@ -61,7 +61,7 @@ const jsonld = toSchemaOrgJsonLd(originalJson, "Person", context);
 [Schema.org](https://schema.org/) is a set of schemas for structured data markup on webpages.  It is important for SEO because all big search engines support it and use it as a signal for search ranking.  Sambal provides an easy way to transform your source data into schema.org metadata in your webpage with just one line of code.
 
 ```js
-const {template, render, pushSchemaOrgJsonLd, toSchemaOrgJsonLd} = require("sambal");
+const {template, render, pushJsonLd, toSchemaOrgJsonLd} = require("sambal");
 const {of} = require("rxjs");
 
 of({
@@ -72,7 +72,7 @@ of({
         "https://github.com/johnny123",
     ]
 })
-.pipe(pushSchemaOrgJsonLd((d) => toSchemaOrgJsonLd(d, "Person"))) // add schema.org Person
+.pipe(pushJsonLd((d) => toSchemaOrgJsonLd(d, "Person"))) // add schema.org Person
 .pipe(render(({familyName, givenName}) => {
     return template`
         <html>
