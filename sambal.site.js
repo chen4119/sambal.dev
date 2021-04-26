@@ -46,5 +46,10 @@ export const siteConfig = {
             }
         }
     ],
-    theme: "sambal-ui-material"
+    theme: {
+        name: "sambal-ui-material",
+        options: {
+            googleAnalyticsId: "UA-12310823-6"
+        }
+    }
 };
