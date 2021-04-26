@@ -1,0 +1,9 @@
+"@type": WPHeader
+headline: Sambal
+hasPart:
+  - "@type": SiteNavigationElement
+    name: About
+    url: /about
+  - "@type": SiteNavigationElement
+    name: Docs
+    url: /get-started

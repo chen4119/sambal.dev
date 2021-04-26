@@ -1,33 +1,20 @@
 {
     "name": "sambal.dev",
     "version": "0.0.1",
-    "description": "Sambal static site generator",
+    "description": "Sambal website",
     "author": "Wan Chun Chen",
     "license": "MIT",
     "engines": {
-        "node": ">=8.0.0"
+        "node": ">=10.0.0"
     },
     "scripts": {
-        "build": "sambal build",
-        "index": "node js/collection.js",
-        "deploy": "npm run index && npm run build",
         "start": "sambal serve",
-        "test": "sambal schema.org person test.yml -f"
+        "build": "sambal build",
+        "deploy": "npm run theme && npm run build",
+        "theme": "cd sambal-ui-material && npm install && npm run theme && cd .."
+
     },
     "devDependencies": {
-        "@babel/core": "7.7.7",
-        "@babel/preset-env": "7.7.7",
-        "@fortawesome/fontawesome-free": "5.10.1",
-        "babel-loader": "8.0.6",
-        "bootstrap": "4.3.1",
-        "css-loader": "3.4.0",
-        "file-loader": "5.0.2",
-        "jquery": "3.5.1",
-        "prismjs": "1.17.1",
-        "sambal": "0.0.33",
-        "sambal-cli": "0.0.34",
-        "style-loader": "1.1.1",
-        "url-loader": "3.0.0",
-        "webpack": "4.41.4"
+        "sambal": "0.0.41"
     }
 }

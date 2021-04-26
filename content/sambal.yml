@@ -1,0 +1,18 @@
+"@type": SoftwareSourceCode
+name: Sambal
+headline: A linked data static site generator
+description: A linked data static site generator
+codeRepository: Sambal
+programmingLanguage: Typescript
+usageInfo:
+  - headline: Schema.org json-ld as the content model
+    alternativeHeadline: schema.org json-ld is Google's recommended format for structured data which means your content is search engine optimized from day one
+  - headline: Generate HTML and schema.org json-ld
+    alternativeHeadline:  Generate schema.org json-ld static files to host on your domain and share your content just like how you share your webpage
+  - headline: Image to schema.org json-ld
+    alternativeHeadline:  Automatically convert image file to schema.org json-ld and generate thumbnails
+  - headline: UI library agnostic
+    alternativeHeadline:  Support React and Javascript template literal out of the box but you can easily use whatever templating engine you prefer
+  - headline: Build universal themes
+    alternativeHeadline:  Build themes to render schema.org content.  Never get locked into any vendor specific content model
+  

@@ -1,0 +1,15 @@
+"@type": WPSideBar
+headline: Sambal
+hasPart:
+  - "@type": ItemList
+    name: Core
+    itemListElement:
+      "@id": collection/docs/_part/section=Core concept
+  - "@type": ItemList
+    name: API
+    itemListElement:
+      "@id": collection/docs/_part/section=API
+  - "@type": ItemList
+    name: Sample Schema.org
+    itemListElement:
+      "@id": collection/docs/_part/section=Sample Schema.org
