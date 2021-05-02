@@ -31,7 +31,7 @@ This is the entry file for Sambal to render html.  A skeleton file will look lik
 ```js
 
 // REQUIRED
-export function renderPage({ page, siteGraph }) {
+export function renderPage({ page, options }) {
     // render complete html page
 }
 

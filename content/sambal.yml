@@ -6,7 +6,7 @@ codeRepository: Sambal
 programmingLanguage: Typescript
 usageInfo:
   - headline: Schema.org json-ld as the content model
-    alternativeHeadline: schema.org json-ld is Google's recommended format for structured data which means your content is search engine optimized from day one
+    alternativeHeadline: Schema.org json-ld is Google's recommended format for structured data which means your content is search engine optimized from day one
   - headline: Generate HTML and schema.org json-ld
     alternativeHeadline:  Generate schema.org json-ld static files to host on your domain and share your content just like how you share your webpage
   - headline: Image to schema.org json-ld

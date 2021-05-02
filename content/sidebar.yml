@@ -1,6 +1,9 @@
 "@type": WPSideBar
 headline: Sambal
 hasPart:
+  - "@type": SiteNavigationElement
+    name: Get Started
+    url: /get-started
   - "@type": ItemList
     name: Core
     itemListElement:

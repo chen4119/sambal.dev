@@ -6,16 +6,20 @@ articleSection: Sample Schema.org
 position: 2
 ---
 
-```yml
+### In markdown
+```md
+---
 "@type": "BlogPosting"
 headline: Title of your blog post
-datePublished: Date or DateTime
-dateModified: Date or DateTime
+datePublished: 2021-05-01
+dateModified: 2021-05-01
 image:
-  "@id": link to image(s)
+  "@id": link to image
 author:
   "@id": link to author
 publisher:
   "@id": link to publisher
-text: Sambal will populate with markdown text if generated from markdown file
+---
+
+Body of your blog post
 ```

@@ -14,7 +14,7 @@ function siteMap(router) => {
 }
 ```
 
-The mandatory arguments required for a router page are a path and a mainEntity.  MainEntity can be specified as a string, a json-ld object, or a promise that resolve into a json-ld object.  For example, to create an about page at https://example.com/about about John Smith
+The mandatory arguments required for a router page are a path and a mainEntity.  MainEntity can be specified as a string, a json-ld object, or a promise that resolve into a json-ld object.  For example, to create an about page at `https://example.com/about` about John Smith
 
 
 ```js

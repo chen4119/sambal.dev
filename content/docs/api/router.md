@@ -16,14 +16,15 @@ function siteMap(router) => {
 
 __Singe page functions:__
 
-### aboutPage(path, mainEntity, options?)
-### collectionPage(path, mainEntity, options?)
-### contactPage(path, mainEntity, options?)
-### itemPage(path, mainEntity, options?)
-### landingPage(path, mainEntity, options?)        // Default path to "/"
-### notFound(path)                                 // 404 page
-### profilePage(path, mainEntity, options?)
-
+```js
+aboutPage(path, mainEntity, options?)
+collectionPage(path, mainEntity, options?)
+contactPage(path, mainEntity, options?)
+itemPage(path, mainEntity, options?)
+landingPage(path, mainEntity, options?)        // Default path to "/"
+notFound(path)                                 // 404 page
+profilePage(path, mainEntity, options?)
+```
 
 __Options:__
 
@@ -36,9 +37,10 @@ __Options:__
 
 __Iterator functions:__
 
-### iterateItems(src, getRoute)
+```js
+iterateItems(src, getRoute)
+paginateCollection(collectionIRI, pageSize, getRoute)
+paginatePartition(collectionIRI, partitionKey, pageSize, getRoute)
+```
 
-### paginateCollection(collectionIRI, pageSize, getRoute)
-
-### paginatePartition(collectionIRI, partitionKey, pageSize, getRoute)
 

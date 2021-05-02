@@ -12,7 +12,7 @@ There are many ways you can generate HTML and that's why by design, Sambal gets 
 
 ```js
 import React from "react";
-export function renderPage({ page, siteGraph }) {
+export function renderPage({ page, options }) {
     const { mainEntity } = page;
     return (
         &lt;html&gt;
@@ -32,7 +32,8 @@ export function renderPage({ page, siteGraph }) {
 
 ```js
 import { template } from "sambal";
-export async function renderPage({ url, pageType, mainEntity, siteGraph }) {
+export async function renderPage({ page, options }) {
+    const { mainEntity } = page;
     return template`
         &lt;html&gt;
             &lt;head&gt;
