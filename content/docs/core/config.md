@@ -16,7 +16,7 @@ Below is a skeleton of how a Sambal project would look like
 /.sambal              // reserved for Sambal temporary files
 /content              // contain your markdown, yaml, json, image files
 sambal.site.js        // website content config file
-sambal.entry.js       // static site ui entry file
+sambal.entry.js       // ui entry file
 package.json          // node.js package file
 ```
 
@@ -26,7 +26,7 @@ Data does not need to be local.  Sambal can fetch a url or resolve a promise tha
 
 # sambal.entry.js
 
-This is the entry file for Sambal to render html.  A skeleton file will look like this.
+This is the entry file for Sambal to render html
 
 ```js
 

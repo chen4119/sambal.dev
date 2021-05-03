@@ -24,8 +24,6 @@ export function siteMap(router) {
                 options: {page: docPage}
             }
         });
-        // .collectionPage("/blogs", "collection/blogs/latest", {page: page})
-        // .itemPage("/blogs/blog1", "blog1", {page: page});
 }
 
 export const siteConfig = {
