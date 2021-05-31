@@ -1,6 +1,5 @@
 ---
 "@type": TechArticle
-identifier: core/rendering-html
 headline: Rendering HTML
 articleSection: Core concept
 position: 2

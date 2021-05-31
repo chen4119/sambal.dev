@@ -1,6 +1,5 @@
 ---
 "@type": TechArticle
-identifier: sample-schema-json-ld/blogposting
 headline: BlogPosting
 articleSection: Sample Schema.org
 position: 2

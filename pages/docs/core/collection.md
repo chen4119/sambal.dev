@@ -1,12 +1,11 @@
 ---
 "@type": TechArticle
-identifier: core/collection
 headline: Collection
 articleSection: Core concept
 position: 6
 ---
 
-Collection is a way to group and sort content.  For example in a blog, you will need a collection of all your blog posts sorted by dateCreated in descending order.  You may also want blog posts grouped by tags.
+Collection is a way to group and sort pages of your website.  For example in a blog, you will need a collection of all your blog posts sorted by dateCreated in descending order.  You may also want blog posts grouped by tags.
 
 # Setup
 
@@ -16,18 +15,16 @@ Collections are defined in sambal.site.js with the following schema
 export const siteConfig = {
     collections: [
         {
-            "@id": "blogs/byAuthor",                      // REQUIRED - collection id
-            "@type": "SiteNavigationElement",             // OPTIONAL - SiteNavigationElement is a special type of collection
-            src: ["blogs/**/*"],                          // REQUIRED - List of glob, urls 
-            groupBy: (mainEntity) => {                    // OPTIONAL - Group by partition key
+            uri: "blogs/byAuthor",                                              // REQUIRED - collection uri
+            match: ["/blogs/**/*"],                                             // REQUIRED - Globs to match page urls
+            groupBy: (mainEntity) => {                                          // OPTIONAL - Group by partition key
                 return {
                     // group by author's name
                     author: mainEntity.author.name
                 };
             },
-            sortBy: {                                     // OPTIONAL - Sort by propName and order
-                prop: "dateCreated",
-                order: "desc"
+            sort: (a, b) => {                                                   // OPTIONAL - Sort
+                return b.dateCreated.getTime() - a.dateCreated.getTime();
             }
         }
     ]

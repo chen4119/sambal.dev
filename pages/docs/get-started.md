@@ -1,6 +1,7 @@
 ---
 "@type": TechArticle
 headline: Get Started
+articleSection: root
 ---
 
 ```sh

@@ -6,7 +6,7 @@ hasPart:
     url: /about
   - "@type": SiteNavigationElement
     name: Docs
-    url: /get-started
+    url: /docs/get-started
 potentialAction:
   - "@type": "DownloadAction"
     target: https://github.com/chen4119/sambal

@@ -1,6 +1,5 @@
 ---
 "@type": TechArticle
-identifier: core/theme
 headline: Theme
 articleSection: Core concept
 position: 5

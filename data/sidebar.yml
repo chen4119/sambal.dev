@@ -1,0 +1,14 @@
+"@type": WPSideBar
+headline: Sambal
+hasPart:
+  - "@type": SiteNavigationElement
+    name: Get Started
+    url: /docs/get-started
+  - "@type": ItemList
+    name: Core
+    itemListElement:
+      "@id": collection/docs?section=Core concept&output=sitenav
+  - "@type": ItemList
+    name: Sample Schema.org
+    itemListElement:
+      "@id": collection/docs?section=Sample Schema.org&output=sitenav
