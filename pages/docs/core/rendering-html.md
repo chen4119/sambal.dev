@@ -7,7 +7,7 @@ position: 2
 
 There are many ways you can generate HTML and that's why by design, Sambal gets out of the way by simply offering a renderPage function.  This provides maximal flexibility in letting you use the UI library you're most comfortable with.  Out of the box, Sambal supports React and Javascript template literal to generate HTML.
 
-### React
+# React
 
 ```js
 import React from "react";
@@ -27,7 +27,7 @@ export function renderPage({ page, options }) {
 ```
 
 
-### Javascript template literal
+# Javascript template literal
 
 ```js
 import { template } from "sambal";

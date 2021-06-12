@@ -31,7 +31,7 @@ export const siteConfig = {
 };
 ```
 
-### Group by
+# Group by
 
 Group by function returns one or more arbitrary partition key in which all content with the same partition key will be grouped.
 

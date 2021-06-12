@@ -5,6 +5,8 @@ articleSection: Core concept
 position: 3
 ---
 
+# Pages folder
+
 Sambal has a file system router where every file path under the pages directory becomes a route in your website.
 
 ```text
@@ -12,7 +14,7 @@ pages/index.yml  -> "/"
 pages/blogs/blog1.md -> "/blogs/blog1"
 ```
 
-File can be in markdown, json or yaml.  The content of the file is the schema.org main entity of the page.  For example, pages/blogs/blog.md might have this content
+Supported File types are markdown, json, yaml or image files.  The content of the file is the schema.org main entity of the page.  For example, pages/blogs/blog.md might have this content
 
 ```markdown
 ---
@@ -43,7 +45,7 @@ Sambal will transform the main entity to a schema.org WebPage so the page for /b
 }
 ```
 
-### _page.yml
+# _page.yml
 
 Now that you have a way to specify the main entity of a webpage.  What if you want to provide more details about the webpage?  _page.yml is a special file you can use to add props to the webpage.  For example, create the file pages/_page.yml with the following content
 
@@ -99,3 +101,6 @@ pages/blogs/blog1.md
 pages/blogs/2021/blog2.md
 ```
 
+# Data folder
+
+Files under the data folder will not be rendered into a HTML page.  Generally these are data fragments referenced by main entities in the pages folder.  Files in this folder will be published as schema.org json-ld.

@@ -5,57 +5,23 @@ articleSection: Core concept
 position: 4
 ---
 
-The core concept behind linked data is that every piece of data has their own globally unique identifier so that anyone can unambigiously reference it, similar to how every webpage has it own unique url so if you share the url with your friends, they can visit the same webpage.  
-
 # Everything is schema.org json-ld
 
-Sambal implements the linked data concept by treating every piece of data as schema.org json-ld.  Json-ld is a linked data format based on JSON so it's completely compatible with any JSON data but with three extra fields, @context, @type and @id.  Sambal automatically adds @context and @id to your data so the only extra field you need to add is @type.  For example, if you create a markdown file of your blog post under content/2021/first-blog.md
+In Sambal, every piece of data is assumed to be schema.org json-ld.  This means you can reference another piece of data stored locally in the pages or data folder or remotely using absolute url.  For example
 
 ```markdown
 ---
 "@type": BlogPosting
 headline: My first blog post
-keywords:
-  - sambal
-  - linked data
----
-My first blog post!
-```
-
-Sambal will automatically default the context to https://schema.org, add the base url as the host of your website and derive the id as the relative path of your file from the root content folder.
-
-```json
-{
-    "@context": {
-        "@vocab": "https://schema.org",
-        "@base": "https://example.com"
-    },
-    "@id": "2021/first-blog",
-    "@type": "BlogPosting",
-    "headline": "My first blog post",
-    "keywords": ["sambal", "linked data"],
-    "text": "My first blog post!"
-}
-```
-
-# Image files are schema.org json-ld too!
-
-Schema.org json-ld data can describe different types of media too!  Sambal support automatically generating ImageObject json-ld for jpeg, gif, webp, png image files.  All you need to do is drop an image file into the content folder.  For example if you add the file content/2021/media/image-1.jpg as an image for your blog post, you can reference it from your blogpost
-
-```markdown
----
-"@type": BlogPosting
-headline: My first blog post
-keywords:
-  - sambal
-  - linked data
+author:
+  "@id": author/johnsmith
 image:
-  "@id": 2021/media/image-1
+  "@id": https://example.com/2021/media/image-1.webp
 ---
 My first blog post!
 ```
 
-Sambal will automatically resolve the image reference and generate the json-ld
+Note that @id is a special keyword defined in the json-ld spec to reference another piece of data.  Here the author of the blogpost is stored as a local file with the relative path author/johnsmith.  No need to specify file extension.  @type is another special keyword to set the type of the data. Sambal automatically adds @context and @id to your data so if the blogpost markdown above is created under pages/2021/first-blog.md, the data will be loaded as
 
 ```json
 {
@@ -63,39 +29,49 @@ Sambal will automatically resolve the image reference and generate the json-ld
         "@vocab": "https://schema.org",
         "@base": "https://example.com"
     },
-    "@id": "2021/first-blog",
+    "@id": "/2021/first-blog",
     "@type": "BlogPosting",
     "headline": "My first blog post",
-    "keywords": ["sambal", "linked data"],
+    "author": {
+        "@id": "author/johnsmith"
+    },
     "image": {
-        "@id": "2021/media/image-1",
-        "contentUrl": "2021/media/image-1.jpg",
-        "encodingFormat": "image/jpg",
-        "width": "&lt;actual width of image&gt;",
-        "height": "&lt;actual height of image&gt;"
+        "@id": "https://example.com/2021/media/image-1.webp"
     },
-    "text": "My first blog post!"
+    "text": "My first blog post!",
+    "encodingFormat": "text/markdown"
 }
 ```
 
+The @id of the data is the relative path of the file from the root pages or data folder.  The @base is the base url specified by the user.
 
-# Link data like you link html page
+# Image files are schema.org json-ld too
 
-The main motivation behind linked data is obviously the ability to link data together.  So how is this relevant to static site generator?  Content tend to be duplicated across many websites, trapped in HTML document that is hard to unbundle and re-use.  Some example include a restaurant profile in Yelp and Seamless.  A person's resume in Linkedin and their own personal website.  They are really just different view of the same content.
+Sambal support automatically generating ImageObject json-ld for jpeg, gif, webp, png image files.  For the image referenced above, Sambal will fetch `https://example.com/2021/media/image-1.webp` and convert that to the following
 
-Sambal solves this problem by automatically publishing the schema.org json-ld you used to generate your website into independent json files that can be statically hosted in your website.  Now in addition to sharing url to your webpage, you can also share url to your schema.org json-ld data.
-
-As you saw in the example above when /2021/first-blog referenced /2021/media/image-1.  Json-ld reference another piece of data by using @id
-
-```js
+```json
 {
-    image: {
-        "@id": "2021/media/image-1"  // relative path to content root folder
-    },
-    author: {
-        "@id": "https://example.org/author/john-smith" // absolute url
-    }
+    "@id": "https://example.com/2021/media/image-1.webp",
+    "@type": "ImageObject",
+    "contentUrl": "https://example.com/2021/media/image-1.webp",
+    "encodingFormat": "image/webp",
+    "width": "&lt;actual width of image&gt;",
+    "height": "&lt;actual height of image&gt;"
 }
 ```
 
+# What if you are unfamiliar with schema.org?
 
+While Sambal assume every data will be using schema.org vocabulary, it doesn't do any validation internally.  This means that you can still use plain old json with your own schema, for example
+
+```markdown
+---
+title: My first blog post
+author:
+  name: John Smith
+tags: ["keyword1", "keyword2"]
+---
+My first blog post!
+```
+
+The downside is that you will not be able to use existing Sambal themes that expect schema.org format and that the json-ld files generated by Sambal will not validate with Google structured data testing tool.
