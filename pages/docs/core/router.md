@@ -2,7 +2,7 @@
 "@type": TechArticle
 headline: Router
 articleSection: Core concept
-position: 3
+position: 2
 ---
 
 # Pages folder

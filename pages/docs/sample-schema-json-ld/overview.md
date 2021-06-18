@@ -5,32 +5,35 @@ articleSection: Sample Schema.org
 position: 1
 ---
 
-Sambal does not impose any requirement on which fields are mandatory but a good advice is to check Google's structured data gallery for advice.  It's to your advantage to fill out as many of their required fields to improve SEO.  
+Sambal does not validate that your data conforms to schema.org.  In fact, you can use plain old json data with Sambal if you want.  Schema.org can seem overwhelming at first with so many fields and so many schemas, most you probably will never use.  One good place to start looking is Google's [search gallery](https://developers.google.com/search/docs/guides/search-gallery) of which schemas their search engine supports.  Following those guidelines will help your website display in richer features in search results.
 
-Sambal helps you populate these fields so you don't need to
+Sambal will auto generate the title, description, and ld+json meta tags for your webpage like below.  The title is mapped to the "name" field of your schema.org main entity or "head" in the case of a [CreativeWork](https://schema.org/CreativeWork) object.  Therefore consider to always provide a meaningful name (or headline) and description of your main entity.
 
-```yml
-# Default to schema context
-"@context":
-  "@vocab": https://schema.org
-  "@base": &lt;Your base url, i.e. https://example.com&gt;
+```html
 
-# For local content files.  For remote files, the url will be the @id, if omitted
-"@id": &lt;relative path to your file from root content folder&gt;
+&lt;title&gt;Title of my article&lt;/title&gt;
+
+&lt;meta name="twitter:card" content="summary" /&gt;
+&lt;meta name="twitter:title" content="Title of my article" /&gt;
+&lt;meta name="twitter:description" content="Description about my article" /&gt;
+
+    
+&lt;meta name="og:url" content="https://example.com/article" /&gt;
+&lt;meta name="og:title" content="Title of my article" /&gt;
+&lt;meta name="og:description" content="Description about my article" /&gt;
+
+&lt;script type="application/ld+json"&gt;
+{
+    "@id": "/blog1",
+    "@context": {
+        "@vocab": "https://schema.org",
+        "@base": "https://example.com"
+    },
+    "@type": "BlogPosting",
+    "headline": "Title of my article",
+    "description": "Description about my article",
+    ...other fields
+}
+&lt;/script&gt;
 ```
-
-
-Sambal futher supports autopopulation for these schema types
-
-ImageObject
-
-```yml
-contentUrl: df
-encodingFormat: df
-width: d
-height: d
-
-```
-
-Below are some sample schema.org json-lds you can use as a template to get started.
 

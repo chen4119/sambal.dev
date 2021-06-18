@@ -2,10 +2,10 @@
 "@type": TechArticle
 headline: Theme
 articleSection: Core concept
-position: 5
+position: 8
 ---
 
-These days you can find plenty of free themes online that can help you create a website in no time, which is great, but usually the content model is severely limited and only valid for that particular theme.  Switching to another theme most likely means you need to modify your content structure even though your content didn't change.
+These days you can find plenty of free themes online that can help you create a website quickly, which is great, but usually the content model is severely limited and only valid for that particular theme.  Switching to another theme most likely mean you need to change your content structure even though your content didn't change.
 
 Sambal theme is different because it is designed to render HTML using schema.org as the content model.  This means that as long as content creator publish their content in schema.org json-ld, they can freely switch themes and not have to worry if their content is compatible with the theme.  UI developer now also has a much richer set of content model to design their themes for.  They can create a theme that renders a blogpost, a recipe, a person's resume, or a product for sale.
 

@@ -23,12 +23,12 @@ package.json          // node.js package file
 Export site config
 
 ```js
-
-
 export const siteConfig = {
     baseUrl: "https://sambal.dev", // REQUIRED
-    collections: [],               // OPTIONAL, group and sort content into collections
-    theme: "sambal-ui-material"    // OPTIONAL, theme to use
+    collections: [],               // OPTIONAL - group and sort pages into collections
+    imageTransforms: [],           // OPTIONAL - transform images
+    theme: "sambal-ui-material",   // OPTIONAL - theme to use
+    resolvers: []                  // OPTIONAL - custom fetchers to resolve uri
 };
 
 ```

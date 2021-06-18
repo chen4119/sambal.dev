@@ -49,14 +49,14 @@ The @id of the data is the relative path of the file from the root pages or data
 
 Sambal support automatically generating ImageObject json-ld for jpeg, gif, webp, png image files.  For the image referenced above, Sambal will fetch `https://example.com/2021/media/image-1.webp` and convert that to the following
 
-```json
+```js
 {
     "@id": "https://example.com/2021/media/image-1.webp",
     "@type": "ImageObject",
-    "contentUrl": "https://example.com/2021/media/image-1.webp",
-    "encodingFormat": "image/webp",
-    "width": "&lt;actual width of image&gt;",
-    "height": "&lt;actual height of image&gt;"
+    contentUrl: "https://example.com/2021/media/image-1.webp",
+    encodingFormat: "image/webp",
+    width: "&lt;actual width of image&gt;",
+    height: "&lt;actual height of image&gt;"
 }
 ```
 

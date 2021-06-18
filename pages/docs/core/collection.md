@@ -7,12 +7,13 @@ position: 6
 
 Collection is a way to group and sort pages of your website.  For example in a blog, you will need a collection of all your blog posts sorted by dateCreated in descending order.  You may also want blog posts grouped by tags.
 
-# Setup
+# Collection config
 
-Collections are defined in sambal.site.js with the following schema
+Add collections in your sambal.site.js file with the following schema
 
 ```js
 export const siteConfig = {
+    // ... other configs
     collections: [
         {
             uri: "blogs/byAuthor",                                              // REQUIRED - collection uri

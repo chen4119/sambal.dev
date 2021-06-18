@@ -2,15 +2,15 @@
 name: Sambal
 headline: A linked data static site generator
 description: A linked data static site generator
-codeRepository: Sambal
+codeRepository: https://github.com/chen4119/sambal
 programmingLanguage: Typescript
 usageInfo:
   - headline: Schema.org json-ld as the content model
-    alternativeHeadline: Be search engine optimized from day one
+    alternativeHeadline: Search engine optimized from day one
   - headline: Generate HTML and schema.org json-ld files
     alternativeHeadline:  Share your json-ld just like how you share your webpage
-  - headline: Image to schema.org json-ld
-    alternativeHeadline:  Automatically convert image to schema.org json-ld and generate thumbnails
+  - headline: Image to schema.org ImageObject
+    alternativeHeadline:  Automatically convert image to schema.org ImageObject and generate thumbnails
   - headline: UI library agnostic
     alternativeHeadline:  Support React and Javascript template literal out of the box
   - headline: Build universal themes
