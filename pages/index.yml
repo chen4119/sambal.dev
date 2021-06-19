@@ -11,8 +11,6 @@ usageInfo:
     alternativeHeadline:  Share your json-ld just like how you share your webpage
   - headline: Image to schema.org ImageObject
     alternativeHeadline:  Automatically convert image to schema.org ImageObject and generate thumbnails
-  - headline: UI library agnostic
-    alternativeHeadline:  Support React and Javascript template literal out of the box
   - headline: Build universal themes
     alternativeHeadline:  Using schema.org means never get locked into any vendor specific content model
   
