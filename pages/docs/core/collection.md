@@ -5,7 +5,7 @@ articleSection: Core concept
 position: 6
 ---
 
-Collection is a way to group and sort pages of your website.  For example in a blog, you will need a collection of all your blog posts sorted by dateCreated in descending order.  You may also want blog posts grouped by tags.
+Collection is a way to group and sort data.  For example in a blog, you can use collection to sort all your blog posts by dateCreated in descending order.  You may also want another collection with blog posts grouped by tags.
 
 # Collection config
 
@@ -17,7 +17,7 @@ export const siteConfig = {
     collections: [
         {
             uri: "blogs/byAuthor",                                              // REQUIRED - collection uri
-            match: ["/blogs/**/*"],                                             // REQUIRED - Globs to match page urls
+            match: ["/blogs/**/*"],                                             // REQUIRED - Globs to match uris
             groupBy: (mainEntity) => {                                          // OPTIONAL - Group by partition key
                 return {
                     // group by author's name

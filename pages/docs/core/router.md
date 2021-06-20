@@ -81,17 +81,7 @@ Any nested files under pages directory will inherit this page properties.  So no
 }
 ```
 
-To override a higher level _page.yml, create a new _page.yml file in the subfolder.
-
-Both "/" and "/blogs/blog1" will inherit from pages/_page.yml 
-
-```text
-pages/_page.yml
-pages/index.yml
-pages/blogs/blog1.md
-```
-
-Only "/" inherit from pages/_page.yml.  Both /blogs/blog1 and /blogs/2021/blog2 will inherit from pages/blogs/_page.yml
+To override a higher level _page.yml, create a new _page.yml file in a subfolder.  So for the example below, if you create pages/blogs/_page.yml, then both /blogs/blog1 and /blogs/2021/blog2 will inherit from pages/blogs/_page.yml while "/" will inherit from pages/_page.yml
 
 ```text
 pages/_page.yml

@@ -7,7 +7,7 @@ position: 4
 
 # Everything is schema.org json-ld
 
-In Sambal, every piece of data is assumed to be schema.org json-ld.  This means you can reference another piece of data stored locally in the pages or data folder or remotely using absolute url.  For example
+In Sambal, every piece of data is assumed to be schema.org json-ld.  [Json-ld](https://json-ld.org/) is a json based linked data format that allows you to reference another piece of data using the "@id" keyword.  Sambal will recursively fetch all references in your json-ld.  For example,
 
 ```markdown
 ---
@@ -21,44 +21,43 @@ image:
 My first blog post!
 ```
 
-Note that @id is a special keyword defined in the json-ld spec to reference another piece of data.  Here the author of the blogpost is stored as a local file with the relative path author/johnsmith.  No need to specify file extension.  @type is another special keyword to set the type of the data. Sambal automatically adds @context and @id to your data so if the blogpost markdown above is created under pages/2021/first-blog.md, the data will be loaded as
+Both the author and image are referencing another piece of data by uri.  Note that the author uri is a relative uri while the image uri is absolute.  In Sambal, a relative uri references a local file under the pages or data root folder.  For example, the following files will map to their respective uris
+
+```text
+pages/index.yml  -> "/"
+pages/blogs/blog1.md -> "/blogs/blog1"
+data/author/johnsmith.yml -> "/author/johnsmith"
+data/images/image1.jpg -> "/images/image1"
+```
+
+Sambal will automatically fetch the references and hydrate the blogpost as such
 
 ```json
 {
-    "@context": {
-        "@vocab": "https://schema.org",
-        "@base": "https://example.com"
-    },
     "@id": "/2021/first-blog",
     "@type": "BlogPosting",
     "headline": "My first blog post",
     "author": {
-        "@id": "author/johnsmith"
+        "@id": "/author/johnsmith",
+        "@type": "Person",
+        "name": "John Smith",
+        "familyName": "Smith",
+        "givenName": "John"
     },
     "image": {
-        "@id": "https://example.com/2021/media/image-1.webp"
+        "@id": "https://example.com/2021/media/image-1.webp",
+        "@type": "ImageObject",
+        "contentUrl": "https://example.com/2021/media/image-1.webp",
+        "encodingFormat": "image/webp",
+        "width": "&lt;actual width of image&gt;",
+        "height": "&lt;actual height of image&gt;"
     },
     "text": "My first blog post!",
     "encodingFormat": "text/markdown"
 }
 ```
 
-The @id of the data is the relative path of the file from the root pages or data folder.  The @base is the base url specified by the user.
-
-# Image files are schema.org json-ld too
-
-Sambal support automatically generating ImageObject json-ld for jpeg, gif, webp, png image files.  For the image referenced above, Sambal will fetch `https://example.com/2021/media/image-1.webp` and convert that to the following
-
-```js
-{
-    "@id": "https://example.com/2021/media/image-1.webp",
-    "@type": "ImageObject",
-    contentUrl: "https://example.com/2021/media/image-1.webp",
-    encodingFormat: "image/webp",
-    width: "&lt;actual width of image&gt;",
-    height: "&lt;actual height of image&gt;"
-}
-```
+Notice the image got transformed into a schema.org ImageObject json-ld too!  Sambal can also auto generate thumbnails for images. Check out [image](/docs/core/image) for more detail.
 
 # What if you are unfamiliar with schema.org?
 
