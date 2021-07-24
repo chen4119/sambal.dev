@@ -4,7 +4,7 @@ headline: A linked data static site generator
 description: A linked data static site generator
 ---
 
-Ahhh yes, another static site generator. Before you flip the page though, I hope you'll hear me out on why Sambal might be worth your time.  Sambal is designed from the ground up to embrace open standards and the open web.  No more vendor specific content model, vendor specific UI framework, nor vendor specific directory structure, etc.
+Ahhh yes, another static site generator. Before you flip the page though, I hope you'll hear me out on why Sambal might be worth your time.  Sambal is designed from the ground up to embrace open standards and the open web.  No more vendor specific content model, vendor specific UI framework etc.
 
 Sambal simply uses [schema.org](https://schema.org/) [json-ld](https://json-ld.org/) as the content model and let you generate static HTML however you like.  There are so many great ways of generating HTML out in the wild that it's counter productive to invent another.  Instead, the main focus for Sambal is the content model.
 

@@ -1,16 +1,23 @@
 "@type": SoftwareSourceCode
-name: Sambal
-headline: A linked data static site generator
-description: A linked data static site generator
+headline: Sambal
+alternativeHeadline: A linked data static site generator
 codeRepository: https://github.com/chen4119/sambal
 programmingLanguage: Typescript
+potentialAction:
+  - "@type": "Action"
+    name: Get Started
+    target: /docs/get-started
 usageInfo:
-  - headline: Schema.org json-ld as the content model
+  - "@type": HowToTip
+    headline: Schema.org json-ld as the content model
     alternativeHeadline: Search engine optimized from day one
-  - headline: Generate HTML and schema.org json-ld files
+  - "@type": HowToTip
+    headline: Generate HTML and schema.org json-ld files
     alternativeHeadline:  Share your json-ld just like how you share your webpage
-  - headline: Image to schema.org ImageObject
+  - "@type": HowToTip
+    headline: Image to schema.org ImageObject
     alternativeHeadline:  Automatically convert image to schema.org ImageObject and generate thumbnails
-  - headline: Build universal themes
+  - "@type": HowToTip
+    headline: Build universal themes
     alternativeHeadline:  Using schema.org means never get locked into any vendor specific content model
   

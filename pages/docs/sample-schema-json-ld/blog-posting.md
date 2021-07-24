@@ -2,7 +2,7 @@
 "@type": TechArticle
 headline: BlogPosting
 articleSection: Sample Schema.org
-position: 2
+position: 3
 ---
 
 ### In markdown

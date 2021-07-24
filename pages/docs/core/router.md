@@ -91,6 +91,30 @@ pages/blogs/blog1.md
 pages/blogs/2021/blog2.md
 ```
 
+# _mount.yml
+
+When you need to create routes dynamically, file system based router might not be the best solution so that's why Sambal has a special _mount.yml file meant to mount routes dynamically.  The content of a _mount.yml file looks like this
+
+```yaml
+paginateCollection:              // A route for every page of a collection
+  uri: blogs/byAuthor            // Collection uri        
+  path: :author/:pageNum         // Route template
+  pageSize: 100                  // Num of entities per page
+
+
+forEach:                         // A route for every entity from the uri
+  uri: https://custom.com/path   // Any resolvable uri
+  path: blog/:id                 // Route template
+```
+
+You can mount routes by paginating a collection or iterating through a list of entities from any resolvable uri.  The path in which _mount.yml is created becomes the path in which the dynamic routes are mounted.  For example if you create a _mount.yml file at pages/archive, then the following paginateCollection routes will be mounted at /archive
+
+```text
+/johnsmith/1 -> /archive/johnsmith/1
+/johnsmith/2 -> /archive/johnsmith/2
+```
+
+
 # Data folder
 
 Files under the data folder will not be rendered into a HTML page.  Generally these are data fragments referenced by main entities in the pages folder.  Files in this folder will be published as schema.org json-ld.

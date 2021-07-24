@@ -19,7 +19,8 @@ export const siteConfig = {
     theme: {
         name: "sambal-ui-material",
         options: {
-            googleAnalyticsId: "UA-12310823-6"
+            landingPage: true,
+            // googleAnalyticsId: "UA-12310823-6"
         }
     }
 };
