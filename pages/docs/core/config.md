@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: Configuration
 articleSection: Core concept
 position: 1

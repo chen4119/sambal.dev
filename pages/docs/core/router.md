@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: Router
 articleSection: Core concept
 position: 2
@@ -27,7 +27,7 @@ keywords:
 My first blog post!
 ```
 
-Sambal will transform the main entity to a schema.org WebPage so the page for /blogs/blog1 will become the json-ld object below.  Note that Sambal will auto populate the url and mainEntityOfPage properties of the webpage.  
+Sambal will transform the main entity to a schema.org WebPage so the page for /blogs/blog1 will look like the json-ld object below.  Note that Sambal will auto populate the url of the webpage and set the mainEntityOfPage to the caninical url of the main entity 
 
 ```js
 {
@@ -39,9 +39,9 @@ Sambal will transform the main entity to a schema.org WebPage so the page for /b
         headline: "My first blog post",
         keywords: ["sambal", "linked data"],
         text: "My first blog post!",
-        encodingFormat: "text/markdown"
-    },
-    mainEntityOfPage: "/blogs/blog1"                // canonical url of main entity
+        encodingFormat: "text/markdown",
+        mainEntityOfPage: "/blogs/blog1"            // canonical url of main entity
+    }
 }
 ```
 
@@ -75,9 +75,9 @@ Any nested files under pages directory will inherit this page properties.  So no
         headline: "My first blog post",
         keywords: ["sambal", "linked data"],
         text: "My first blog post!",
-        encodingFormat: "text/markdown"
-    },
-    mainEntityOfPage: "/blogs/blog1"
+        encodingFormat: "text/markdown",
+        mainEntityOfPage: "/blogs/blog1"
+    }
 }
 ```
 

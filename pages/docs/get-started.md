@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: Get Started
 articleSection: root
 ---

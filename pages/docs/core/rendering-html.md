@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: Rendering HTML
 articleSection: Core concept
 position: 3

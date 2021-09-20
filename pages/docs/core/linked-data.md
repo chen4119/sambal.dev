@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: Linked data
 articleSection: Core concept
 position: 4

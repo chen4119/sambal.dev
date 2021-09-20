@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: URI Resolver
 articleSection: Core concept
 position: 7

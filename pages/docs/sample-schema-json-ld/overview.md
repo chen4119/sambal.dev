@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: Overview
 articleSection: Sample Schema.org
 position: 1

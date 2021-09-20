@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: A linked data static site generator
 description: A linked data static site generator
 ---

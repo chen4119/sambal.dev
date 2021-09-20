@@ -1,5 +1,5 @@
 ---
-"@type": TechArticle
+"@type": Article
 headline: Webpage props
 articleSection: Sample Schema.org
 position: 2
