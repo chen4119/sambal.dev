@@ -19,7 +19,6 @@ Examples
 
 ```js
 const obj = {
-    "@id": "/blog1",
     "@type": "BlogPosting",
     ... other properties
 }

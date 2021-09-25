@@ -24,7 +24,6 @@ Sambal will auto generate the title, description, and ld+json meta tags for your
 
 &lt;script type="application/ld+json"&gt;
 {
-    "@id": "/blog1",
     "@context": {
         "@vocab": "https://schema.org",
         "@base": "https://example.com"

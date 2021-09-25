@@ -16,8 +16,8 @@ export const siteConfig = {
     // ... other configs
     collections: [
         {
-            uri: "blogs/byAuthor",                                           // REQUIRED - collection uri
-            match: ["/blogs/**/*"],                                          // REQUIRED - Globs to match uris
+            uri: "/blogs/byAuthor",                                          // REQUIRED - collection uri
+            include: ["blogs/**/*"],                                         // REQUIRED - Globs to match uris
             groupBy: (mainEntity) => {                                       // OPTIONAL - Group by partition key
                 return {
                     // group by author's name
@@ -69,8 +69,8 @@ export const siteConfig = {
     // ... other configs
     collections: [
         {
-            uri: "blogs/latest",
-            match: ["/blogs/**/*"],
+            uri: "/blogs/latest",
+            include: ["blogs/**/*"],
             sort: (a, b) => {
                 return b.dateCreated.getTime() - a.dateCreated.getTime();
             }
@@ -82,7 +82,7 @@ export const siteConfig = {
 You can then access the collection by it's uri in your /blogs yaml file
 
 ```yml
-"@id": blogs/latest
+"@id": /blogs/latest
 ```
 
 Sambal will output a collection as a schema.org ItemList

@@ -14,7 +14,7 @@ pages/index.yml  -> "/"
 pages/blogs/blog1.md -> "/blogs/blog1"
 ```
 
-Supported File types are markdown, json, yaml or image files.  The content of the file is the schema.org main entity of the page.  For example, pages/blogs/blog.md might have this content
+Supported File types are markdown, json, yaml or image files.  The content of the file is the schema.org main entity of the page.  For example, if pages/blogs/blog.md has this content
 
 ```markdown
 ---
@@ -27,7 +27,7 @@ keywords:
 My first blog post!
 ```
 
-Sambal will transform the main entity to a schema.org WebPage so the page for /blogs/blog1 will look like the json-ld object below.  Note that Sambal will auto populate the url of the webpage and set the mainEntityOfPage to the caninical url of the main entity 
+Sambal will transform the blog post to be the main entity of the /blogs/blog1 page.  Sambal will auto populate the url of the WebPage.
 
 ```js
 {
@@ -39,8 +39,7 @@ Sambal will transform the main entity to a schema.org WebPage so the page for /b
         headline: "My first blog post",
         keywords: ["sambal", "linked data"],
         text: "My first blog post!",
-        encodingFormat: "text/markdown",
-        mainEntityOfPage: "/blogs/blog1"            // canonical url of main entity
+        encodingFormat: "text/markdown"
     }
 }
 ```
@@ -69,8 +68,7 @@ Any nested files under pages directory will inherit this page properties.  So no
             url: "/about"
         }
     ],
-    mainEntity: {
-        "@id": "/blogs/blog1",          
+    mainEntity: {       
         "@type": "BlogPosting",
         headline: "My first blog post",
         keywords: ["sambal", "linked data"],
@@ -90,31 +88,3 @@ pages/blogs/_page.yml
 pages/blogs/blog1.md
 pages/blogs/2021/blog2.md
 ```
-
-# _mount.yml
-
-When you need to create routes dynamically, file system based router might not be the best solution so that's why Sambal has a special _mount.yml file meant to mount routes dynamically.  The content of a _mount.yml file looks like this
-
-```yaml
-paginateCollection:              // A route for every page of a collection
-  uri: blogs/byAuthor            // Collection uri        
-  path: :author/:pageNum         // Route template
-  pageSize: 100                  // Num of entities per page
-
-
-forEach:                         // A route for every entity from the uri
-  uri: https://custom.com/path   // Any resolvable uri
-  path: blog/:id                 // Route template
-```
-
-You can mount routes by paginating a collection or iterating through a list of entities from any resolvable uri.  The path in which _mount.yml is created becomes the path in which the dynamic routes are mounted.  For example if you create a _mount.yml file at pages/archive, then the following paginateCollection routes will be mounted at /archive
-
-```text
-/johnsmith/1 -> /archive/johnsmith/1
-/johnsmith/2 -> /archive/johnsmith/2
-```
-
-
-# Data folder
-
-Files under the data folder will not be rendered into a HTML page.  Generally these are data fragments referenced by main entities in the pages folder.  Files in this folder will be published as schema.org json-ld.

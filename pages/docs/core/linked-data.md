@@ -14,38 +14,28 @@ In Sambal, every piece of data is assumed to be schema.org json-ld.  [Json-ld](h
 "@type": BlogPosting
 headline: My first blog post
 author:
-  "@id": author/johnsmith
+  "@id": /author/johnsmith.yml
 image:
   "@id": https://example.com/2021/media/image-1.webp
 ---
 My first blog post!
 ```
 
-Both the author and image are referencing another piece of data by uri.  Note that the author uri is a relative uri while the image uri is absolute.  In Sambal, a relative uri references a local file under the pages or data root folder.  For example, the following files will map to their respective uris
-
-```text
-pages/index.yml  -> "/"
-pages/blogs/blog1.md -> "/blogs/blog1"
-data/author/johnsmith.yml -> "/author/johnsmith"
-data/images/image1.jpg -> "/images/image1"
-```
+Both the author and image are referencing another piece of data by uri.  Note that the author uri is a relative uri while the image uri is absolute.  In Sambal, a relative uri references a local file relative to the root project folder.
 
 Sambal will automatically fetch the references and hydrate the blogpost as such
 
 ```json
 {
-    "@id": "/2021/first-blog",
     "@type": "BlogPosting",
     "headline": "My first blog post",
     "author": {
-        "@id": "/author/johnsmith",
         "@type": "Person",
         "name": "John Smith",
         "familyName": "Smith",
         "givenName": "John"
     },
     "image": {
-        "@id": "https://example.com/2021/media/image-1.webp",
         "@type": "ImageObject",
         "contentUrl": "https://example.com/2021/media/image-1.webp",
         "encodingFormat": "image/webp",

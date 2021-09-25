@@ -12,7 +12,6 @@ Below is a skeleton of how a Sambal project would look like.
 ```text
 /.sambal              // reserved for Sambal temporary files
 /pages                // Root directory for pages of your website
-/data                 // Root directory for json-ld
 sambal.site.js        // website config file
 sambal.entry.js       // ui entry file
 package.json          // node.js package file

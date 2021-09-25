@@ -7,12 +7,12 @@ hasPart:
   - "@type": ItemList
     name: Core
     itemListElement:
-      "@id": collection/docs?section=Core concept&output=sitenav
+      "@id": /collection/docs?section=Core concept&output=sitenav
   - "@type": ItemList
     name: API
     itemListElement:
-      "@id": collection/docs?section=API&output=sitenav
+      "@id": /collection/docs?section=API&output=sitenav
   - "@type": ItemList
     name: Sample Schema.org
     itemListElement:
-      "@id": collection/docs?section=Sample Schema.org&output=sitenav
+      "@id": /collection/docs?section=Sample Schema.org&output=sitenav
