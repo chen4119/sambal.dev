@@ -9,15 +9,9 @@ potentialAction:
     target: /docs/get-started
 usageInfo:
   - "@type": HowToTip
-    headline: Schema.org json-ld as the content model
-    alternativeHeadline: Search engine optimized from day one
+    headline: Natively support schema.org json-ld
   - "@type": HowToTip
-    headline: Generate HTML and schema.org json-ld files
-    alternativeHeadline:  Share your json-ld just like how you share your webpage
+    headline: Generate both HTML and schema.org json-ld files
   - "@type": HowToTip
-    headline: Image to schema.org ImageObject
-    alternativeHeadline:  Automatically convert image to schema.org ImageObject and generate thumbnails
-  - "@type": HowToTip
-    headline: Build universal themes
-    alternativeHeadline:  Using schema.org means never get locked into any vendor specific content model
+    headline: Build UI themes based on the semantic meaning of your data
   

@@ -1,22 +1,22 @@
 ---
 "@type": Article
 headline: A linked data static site generator
-description: Generate webpage directly from schema.org json-ld data
+description: Generate website directly from schema.org json-ld data
 ---
 
-Not another static site generator!  Maybe that's what you're thinking right now but I hope you'll hear me out on why Sambal will be worth your time.  Sambal is designed from the ground up to embrace open standards and the open web.  No more vendor specific content model, vendor specific UI framework, vendor specific template syntax, etc.  In fact, Sambal is not opinionated about how you generate HTML at all!
+If you're thinking not another static site generator...I know but I hope you'll hear me out on why Sambal is different.  Whereas the purpose of many static site generators is to help users generate HTML or bundle javascript more efficiently, that is not what Sambal is about.  Sambal simply let you use your favorite UI library as you normally would so you don't have to learn anything new.
 
-The main focus for Sambal is the content model.  Sambal natively supports [schema.org](https://schema.org/) [json-ld](https://json-ld.org/) as the content model because schema.org has over 700+ content types and most importantly, it's open and supported by big search engines like Google and Microsoft.
+Instead, the main focus for Sambal is the content model.  It natively supports [schema.org](https://schema.org/) [json-ld](https://json-ld.org/) to help you generate a more meaningful and SEO website based on the semantic meaning of your data.  Compare to other static site generators where they essentially don't care about the meaning of your data, Sambal's focus on data semantics has 3 major advantages: 
 
-If you have never considered creating your content in schema.org json-ld, here are 3 major benefits that hopefully will convince you to try.
+1. It can automatically add application/ld+json, facebook, and twitter metadata tags to your webpage.
 
-1. Using schema.org vocabulary automatically makes your content search engine friendly.  Sambal can automatically add application/ld+json, facebook, and twitter metadata tags to your webpage
+2. You can build UI themes based on the semantic meaning of your data and not rely on the property name of your data.  To illustrate the difference, it's unambiguous what blogpost tags are but you can encode tags in your blogpost with many names, i.e. keywords, categories, tags, etc.  By relying solely on property names, UI themes are brittle in nature. 
 
-2. Unlike plain old json, json-ld (aka json linked data) can reference other data fragments with a url just like linking to another webpage with a hyperlink.  Say goodbye to duplicating data in every markdown or yaml file.
+3. Leverage the power of linked data.  Unlike plain old json, json-ld (aka json linked data) can reference other data fragments with a url just like linking to another webpage with a hyperlink.  Say goodbye to duplicating data in static markdown or yaml file.
 
-3. No need to model your own content, it's time consuming and it's not compatible with anybody else's content model.
+Schema.org has over 700+ content types and supported by Google, Microsoft and Yandex so it's the ideal content model for the web.  By creating your content in schema.org vocabularies, your data will automatically be search engine optimized and you will never have to worry about vendor lock-in.
 
-Unlike other static site generators which focus exclusively on generating static HTML, Sambal generate both HTML and schema.org json-ld files.  By hosting these json-ld files on your website, every piece of your raw content will have a unique URL that you can reference from other json-ld data.  As an example, check out the schema.org json-ld representation of this page [here](https://sambal.dev/about/schema.json).  Now I can reference it from any json-ld like so
+Sambal generate both the HTML page and the raw schema.org json-ld representation of your content.  By hosting these json-ld files on your website, every piece of your raw content will have a unique URL that you can reference from other json-ld data.  As an example, check out the schema.org json-ld representation of this page [here](https://sambal.dev/about/schema.json).  Now I can reference it from any json-ld like so
 
 ```yaml
 "@context": "https://schema.org"
