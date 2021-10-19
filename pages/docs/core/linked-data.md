@@ -5,6 +5,32 @@ articleSection: Core concept
 position: 4
 ---
 
+# Json vs Json-ld
+
+Many people might not be familiar with [json-ld](https://json-ld.org/) and that's ok.  The most important thing to know about json-ld is that it's just json with a few extra special fields.  Here is a brief explanation of the special json-ld fields you will encounter with Sambal.
+
+```yaml
+"@context": "https://schema.org"   // To provide context about what vocabularies this data will use
+                                   // For Sambal, @context is assumed to be schema.org so this field can be omitted
+"@type": "BlogPosting"             // The schema.org type of the data
+author:
+  "@id": /author/johnsmith.yml     // @id is json-ld's way of referencing another data fragment
+```
+
+A slightly more complicated json-ld
+
+```yaml
+"@context":
+  "@vocab": https://schema.org     // Use schema.org vocabulary
+  "@base": https://example.com     // Set base url
+"@type": "BlogPosting"
+author:
+  - "@id": /author/johnsmith.yml   // Array of references
+  - "@id": /author/janedoe.yml
+```
+
+You can set the @base in @context so all relative urls will be relative to this base url.  In this case, the absolute url for /author/johnsmith.yml is https://example.com/author/johnsmith.yml.  There's obviously a lot more to json-ld than that.  If you're interested, you can check out the full [json-ld spec](https://www.w3.org/TR/json-ld11/).
+
 # Everything is schema.org json-ld
 
 In Sambal, every piece of data is assumed to be schema.org json-ld.  [Json-ld](https://json-ld.org/) is a json based linked data format that allows you to reference another piece of data using the "@id" keyword.  Sambal will recursively fetch all references in your json-ld.  For example,
