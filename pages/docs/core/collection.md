@@ -82,7 +82,9 @@ export const siteConfig = {
 You can then access the collection by it's uri in your /blogs yaml file
 
 ```yml
-"@id": /blogs/latest
+"@type": "ItemList"
+itemListElement:
+  "@id": /blogs/latest
 ```
 
 Sambal will output a collection as a schema.org ItemList

@@ -1,7 +1,7 @@
 ---
 "@type": Article
 headline: A linked data static site generator
-description: Generate website directly from schema.org json-ld data
+description: Generate SEO website directly from schema.org json-ld data
 ---
 
 If you're thinking not another static site generator...I know but I hope you'll hear me out on why Sambal is different.  Whereas the purpose of many static site generators is to help users generate HTML or bundle javascript more efficiently, that is not what Sambal is about.  Sambal simply let you use your favorite UI library as you normally would so you don't have to learn anything new.

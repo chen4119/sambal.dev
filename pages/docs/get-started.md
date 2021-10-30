@@ -12,6 +12,12 @@ npx sambal init                  // create sambal.site.js, sambal.entry.js and s
 npx sambal serve                 // start dev server on localhost:3000
 ```
 
+To generate your website
+
+```sh
+npx sambal build                 // build static site in /public
+```
+
 For your convenience add the following sambal CLI commands to package.json
 
 ```json
