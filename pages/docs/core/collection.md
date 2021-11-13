@@ -81,7 +81,7 @@ export const siteConfig = {
 
 You can then access the collection by it's uri in your /blogs yaml file
 
-```yml
+```yaml
 "@type": "ItemList"
 itemListElement:
   "@id": /blogs/latest
@@ -106,7 +106,7 @@ Sambal will output a collection as a schema.org ItemList
 
 If your collection implemented a groupBy function, you can query your collection by the partition key.  For example, the /blogs/byAuthor collection above is partitioned by author's name so to get a list of all blogposts by John Smith, you can query with this uri
 
-```text
+```bash
 /blogs/byAuthor?author=John Smith
 ```
 
@@ -124,6 +124,6 @@ Or if you are partitioning by author and year like so
 
 You can get a list of all blogposts by John Smith written in 2019 with this uri
 
-```sh
+```bash
 /blogs/byAuthor?author=John Smith&year=2019
 ```

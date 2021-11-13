@@ -2,10 +2,10 @@
 "@type": Article
 headline: Webpage props
 articleSection: Sample Schema.org
-position: 2
+position: 6
 ---
 
-Other than the required mainEntity of a webpage, there are many other properties you can set for your webpage using [_page.yml](docs/core/router/#pageyml).  Here are some examples
+Other than the required mainEntity of a webpage, there are many other properties you can set for your webpage using [_page.yml](docs/core/router#pageyml).  Here are some examples
 
 
 ### Header with navigation and action

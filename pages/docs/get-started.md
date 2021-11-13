@@ -4,18 +4,18 @@ headline: Get Started
 articleSection: root
 ---
 
-```sh
-npm install --save-dev sambal    // install sambal as a dev dependency
+```bash
+npm install --save-dev sambal    # install sambal as a dev dependency
 
-npx sambal init                  // create sambal.site.js, sambal.entry.js and sample content
+npx sambal init                  # create sambal.site.js, sambal.entry.js and sample content
 
-npx sambal serve                 // start dev server on localhost:3000
+npx sambal serve                 # start dev server on localhost:3000
 ```
 
 To generate your website
 
-```sh
-npx sambal build                 // build static site in /public
+```bash
+npx sambal build                 # build static site in /public
 ```
 
 For your convenience add the following sambal CLI commands to package.json

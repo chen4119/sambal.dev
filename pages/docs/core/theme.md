@@ -17,14 +17,14 @@ Using a Sambal theme is as simple as adding another Sambal project as a submodul
 
 As an example to use the sambal-ui-material theme, run the following in your root project folder to add sambal-ui-material as a submodule
 
-```sh
+```bash
 git submodule add https://github.com/chen4119/sambal-ui-material.git
 
 cd sambal-ui-material
 
 npm install
 
-npm run theme  // build project into /dist
+npm run theme  # build project into /dist
 
 ```
 

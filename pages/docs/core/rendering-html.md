@@ -9,7 +9,7 @@ There are many great UI libraries, HTML template engines you can use to generate
 
 # React
 
-```js
+```jsx
 import React from "react";
 export function renderPage({ page, options }) {
     const { mainEntity } = page;
