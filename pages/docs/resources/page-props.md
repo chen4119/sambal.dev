@@ -1,8 +1,9 @@
 ---
 "@type": Article
 headline: Webpage props
-articleSection: Sample Schema.org
-position: 6
+description: Sample webpage properties you can add
+articleSection: Resources
+position: 4
 ---
 
 Other than the required mainEntity of a webpage, there are many other properties you can set for your webpage using [_page.yml](docs/core/router#pageyml).  Here are some examples

@@ -13,6 +13,6 @@ hasPart:
     itemListElement:
       "@id": /collection/docs?section=API&output=sitenav
   - "@type": ItemList
-    name: Sample Schema.org
+    name: Resources
     itemListElement:
-      "@id": /collection/docs?section=Sample Schema.org&output=sitenav
+      "@id": /collection/docs?section=Resources&output=sitenav

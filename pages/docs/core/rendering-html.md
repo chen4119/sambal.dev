@@ -46,9 +46,36 @@ export async function renderPage({ page, options }) {
 }
 ```
 
-# Auto render ld+json, Facebook and Twitter meta tags
+# Auto generate ld+json, Facebook and Twitter meta tags
 
-Since Sambal uses schema.org as the content model, it can easily derive ld+json, Facebook and Twitter meta tags for every webpage.  No need to transform or map your data like you would with other static site generators.  You get SEO for free by using schema.org!
+You get SEO for free if you use schema.org json-ld!  No need to transform or map your data like you would with other static site generators.  Sambal will auto generate the title, description, and ld+json meta tags for your webpage like below.  The title is mapped to the "name" field of your schema.org main entity or "headline" in the case of a [CreativeWork](https://schema.org/CreativeWork) object.  Always consider to provide a meaningful name (or headline) and description for your main entity.
+
+```html
+
+&lt;title&gt;Title of my article&lt;/title&gt;
+
+&lt;meta name="twitter:card" content="summary" /&gt;
+&lt;meta name="twitter:title" content="Title of my article" /&gt;
+&lt;meta name="twitter:description" content="Description about my article" /&gt;
+
+    
+&lt;meta name="og:url" content="https://example.com/article" /&gt;
+&lt;meta name="og:title" content="Title of my article" /&gt;
+&lt;meta name="og:description" content="Description about my article" /&gt;
+
+&lt;script type="application/ld+json"&gt;
+{
+    "@context": {
+        "@vocab": "https://schema.org",
+        "@base": "https://example.com"
+    },
+    "@type": "BlogPosting",
+    "headline": "Title of my article",
+    "description": "Description about my article",
+    ...other fields
+}
+&lt;/script&gt;
+```
 
 
 # Bundling Javascript, css, and other assets
