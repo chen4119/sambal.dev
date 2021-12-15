@@ -1,34 +1,75 @@
 ---
 "@type": Article
 headline: Theme
+description: Build robust UI themes for schema.org structured data.  Simply use npm/yarn workspace to add a Sambal UI theme
 articleSection: Core concept
 position: 8
 ---
 
-These days you can find plenty of free themes online that can help you create a website quickly, which is great, but usually the content model is severely limited and only valid for that particular theme.  Switching to another theme most likely mean you need to change your content structure even though your content didn't change.
+Sambal is designed to completely separate UI from data.  This is important because it allow a website owner to swap UI (aka theme) in and out without modifying site content.  Too often with other static site generators, you see UI tangled with site content and there is no easy way to change one without adversely affecting the other.  As a result, you end up building fragile UI themes.
 
-Sambal theme is different because it is designed to render HTML using schema.org as the content model.  This means that as long as content creator publish their content in schema.org json-ld, they can freely switch themes and not have to worry if their content is compatible with the theme.  UI developer now also has a much richer set of content model to design their themes for.  They can create a theme that renders a blogpost, a recipe, a person's resume, or a product for sale.
+With Sambal, UI developer can build UI for schema.org structured datas and as long as website owner also publish their content in schema.org structured data, it will be compatible with each other.  As a result, UI developer can build more robust UI themes and website owner can swap UI themes with more confidence.
 
-Sambal theme is designed so that the content creater can work independently from the UI developer without stepping on each other.
+# Using npm/yarn workspace to add Sambal themes
 
-# Using a theme
+Each Sambal theme is a npm/yarn workspace.  You can have as many themes as you like in a Sambal project
 
-Using a Sambal theme is as simple as adding another Sambal project as a submodule in your project and setting the theme config in sambal.site.js.  
+```text
 
-As an example to use the sambal-ui-material theme, run the following in your root project folder to add sambal-ui-material as a submodule
+/pages                // website pages
+sambal.site.js        // website config file
+package.json          // website package.json
+/first-theme
+    sambal.entry.js   // ui entry files
+    package.json      // ui package.json
+/second-theme
+    sambal.entry.js   // ui entry files
+    package.json      // ui package.json
+```
+
+Remember to add workspaces to your root package.json so that workspace dependencies will be added to the root project
+
+```json
+{
+    // ... other package.json configs
+    "workspaces": [
+        "first-theme",
+        "second-theme"
+    ]
+}
+```
+
+Then specify which theme to use in sambal.site.js
+
+```js
+export const siteConfig = {
+    // ...other configs
+    theme: "first-theme"
+};
+```
+
+# Share your theme
+
+Just make your github project public.  Users can add your theme as a git submodule in their project. For example, to add sambal-ui-material theme, follow these 3 simple steps
+
+1. In your root project folder, add sambal-ui-material as a git submodule
 
 ```bash
 git submodule add https://github.com/chen4119/sambal-ui-material.git
-
-cd sambal-ui-material
-
-npm install
-
-npm run theme  # build project into /dist
-
 ```
 
-Then add theme config to your sambal.site.js
+2. Add sambal-ui-material as a workspace in package.json
+
+```json
+{
+    // ... other package.json configs
+    "workspaces": [
+        "sambal-ui-material"
+    ]
+}
+```
+
+3. Use sambal-ui-material in sambal.site.js
 
 ```js
 export const siteConfig = {
@@ -37,6 +78,3 @@ export const siteConfig = {
 };
 ```
 
-# Publish a theme to share
-
-As demonstrated above, to share a theme, all you really need to do is to open source it in Github.

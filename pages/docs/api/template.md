@@ -1,6 +1,7 @@
 ---
 "@type": APIReference
 headline: Template
+description: Plain old Javascript template literal with support for array, promise, and null values
 articleSection: API
 position: 2
 ---

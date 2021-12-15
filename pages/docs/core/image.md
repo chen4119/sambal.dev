@@ -1,11 +1,35 @@
 ---
 "@type": Article
-headline: Images
+headline: Image
+description: Sambal can auto convert jpg, webp, gif and png image to schema.org ImageObject structured data
 articleSection: Core concept
 position: 5
 ---
 
-Sambal supports auto converting jpg, webp, gif and png images to schema.org ImageObject json-ld.  When an image is referenced, it will appear as an ImageObject json-ld.  For example, if you have an image file at data/images/image-1.jpg.  You reference this image from your blogpost at pages/blogs/2021/blog1.md as such
+# Render &lt;img&gt; HTML from schema.org ImageObject structured data
+
+Sambal can auto convert jpg, webp, gif and png image to schema.org ImageObject structured data with the following fields.
+
+```json
+{
+    "@type": "ImageObject",
+    "url": "https://example.com/data/images/image-1.jpg",   // Absolute URL to the image
+    "contentUrl": "/data/images/image-1.jpg",               // Relative URL to your hostname
+    "encodingFormat": "image/jpg",                          // Mime type of your image
+    "width": "&lt;actual width of image&gt;",               // Actual width of your image
+    "height": "&lt;actual height of image&gt;"              // Actual height of your image
+}
+```
+
+From this ImageObject structured data, you have all the information you need to render &lt;img&gt; HTML.
+
+```html
+
+```
+
+# Referencing image(s) in schema.org json-ld
+
+Referencing an image is exactly the same as referencing another yaml or json file.  Sambal will take care of converting an image into an ImageObject structured data.  For example, to reference a local image file at data/images/image-1.jpg
 
 ```markdown
 ---
@@ -19,43 +43,85 @@ My first blog post!
 
 The blogpost json-ld will look like this
 
-```js
+```json
 {
     "@type": "BlogPosting",
-    headline: "My first blog post",
-    image: {
+    "headline": "My first blog post",
+    "image": {
         "@type": "ImageObject",
-        contentUrl: "/data/images/image-1.jpg",
-        encodingFormat: "image/jpg",
-        width: "&lt;actual width of image&gt;",
-        height: "&lt;actual height of image&gt;"
+        "url": "https://example.com/data/images/image-1.jpg",
+        "contentUrl": "/data/images/image-1.jpg",
+        "encodingFormat": "image/jpg",
+        "width": "&lt;actual width of image&gt;",
+        "height": "&lt;actual height of image&gt;"
     },
     "text": "My first blog post!",
     "encodingFormat": "text/markdown"
 }
 ```
 
-# ImageTransformation config
+To reference more than one image
 
-You can also configure Sambal to transform images to your desired width, height and format by adding image transform configs in your sambal.site.js file with the following schema
+```markdown
+---
+"@type": BlogPosting
+headline: My first blog post
+image:
+  - "@id": /data/images/image-1.jpg
+  - "@id": /data/images/image-2.jpg
+---
+My first blog post!
+```
 
-```js
-export const siteConfig = {
-    // ... other configs
-    imageTransforms: [
+The blogpost json-ld will look like this
+
+```json
+{
+    "@type": "BlogPosting",
+    "headline": "My first blog post",
+    "image": [
         {
-            include: "images/**/*",             // REQUIRED - Globs to match
-            width: 500,                         // OPTIONAL - Resize image width to 500px, preserve aspect ratio
-            height: 500,                        // OPTIONAL - Resize image height to 500px, preserve aspect ratio
-            encodingFormat: "image/webp",       // OPTIONAL - Transform image to webp
-            thumbnails: [                       // OPTIONAL - Generate thumbnails
-                {
-                    suffix: "50",               // REQUIRED - Add suffix to image name. i.e. image-1-50
-                    width: 50,                  // OPTIONAL - Resize thumbnail width to 50px, preserve aspect ratio
-                    height: 50                  // OPTIONAL - Resize thumbnail width to 50px, preserve aspect ratio
-                }
-            ]
+            "@type": "ImageObject",
+            "url": "https://example.com/data/images/image-1.jpg",
+            "contentUrl": "/data/images/image-1.jpg",
+            "encodingFormat": "image/jpg",
+            "width": "&lt;actual width of image-1&gt;",
+            "height": "&lt;actual height of image-1&gt;"
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://example.com/data/images/image-2.jpg",
+            "contentUrl": "/data/images/image-2.jpg",
+            "encodingFormat": "image/jpg",
+            "width": "&lt;actual width of image-2&gt;",
+            "height": "&lt;actual height of image-2&gt;"
         }
-    ]
-};
+    ],
+    "text": "My first blog post!",
+    "encodingFormat": "text/markdown"
+}
+```
+
+
+# Image optimization and thumbnails
+
+Sambal can optimize your image and generate additional thumbnails by using query parameters when referencing an image.  Below is the list of query parameters supported.
+
+```text
+w=100                        // Resize image width to 100px
+h=100                        // Resize image height to 100px
+output=webp|png|jpg|gif      // Image output format.  Possible values webp, png, jpg, gif
+thumbnails=50w,25w,50h       // Generate 3 thumbnails
+```
+
+Some examples
+
+```yml
+image:
+  "@id": /data/images/image-1.jpg?w=150&output=webp  # Resize image-1 width to 150px and output in webp format
+```
+
+```yml
+image:
+  "@id": http://example.com/image-2.jpg?thumbnails=50w,25w  # Works with absolute url.  Generate 2 thumbnails, one width=50px, one width=25px
 ```

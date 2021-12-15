@@ -1,11 +1,12 @@
 ---
 "@type": APIReference
 headline: Helper functions
+description: Helper functions to make it easier to work with schema.org structured data
 articleSection: API
 position: 1
 ---
 
-Sambal provides a few helper functions that will help make it easier to work with schema.org vocabularies.
+Sambal provides a few helper functions that will help make it easier to work with schema.org structured data.
 
 # isSchemaType
 
