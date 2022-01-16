@@ -6,7 +6,7 @@ articleSection: Resources
 position: 3
 ---
 
-Schema.org can seem overwhelming at first with so many fields and so many schemas, most you probably will never use.  One good place to get started is Google's [search gallery](https://developers.google.com/search/docs/guides/search-gallery) of supported schemas.  Following those guidelines will help your website display in richer features in search results.  Below are some sample schemas you might find useful.
+Schema.org can seem overwhelming at first with so many fields and so many schemas, most you probably will never use.  One good place to get started is Google's [search gallery](https://developers.google.com/search/docs/guides/search-gallery) of structured data.  Following those guidelines will help your website display in richer features in search results.  Below are some sample schemas you might find useful.
 
 
 * [Article](/docs/resources/sample-schema-json-ld#article)

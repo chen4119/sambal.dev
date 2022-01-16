@@ -1,5 +1,6 @@
 "@type": SoftwareSourceCode
 headline: Sambal
+description: SEO friendly static site generator
 alternativeHeadline: A linked data static site generator
 codeRepository: https://github.com/chen4119/sambal
 programmingLanguage: Typescript
@@ -9,7 +10,7 @@ potentialAction:
     target: /docs/get-started
 usageInfo:
   - "@type": HowToTip
-    headline: Natively support schema.org json-ld
+    headline: Natively support schema.org structured data
   - "@type": HowToTip
     headline: Generate both HTML and schema.org json-ld files
   - "@type": HowToTip

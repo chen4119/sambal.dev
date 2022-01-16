@@ -25,7 +25,6 @@ Export site config
 export const siteConfig = {
     baseUrl: "https://sambal.dev", // REQUIRED
     collections: [],               // OPTIONAL - group and sort pages into collections
-    imageTransforms: [],           // OPTIONAL - transform images
     theme: "sambal-ui-material",   // OPTIONAL - theme to use
     resolvers: []                  // OPTIONAL - custom fetchers to resolve uri
 };
@@ -50,11 +49,4 @@ export const defaultOptions = {
     secondaryColor: "#DFE"
 }
 
-// OPTIONAL - Client side JS bundles to run on the browser.  Sambal will bundle each entry file using webpack
-export const browserBundle = {
-    entry: {
-        page1: "path to page1 bundle entry file",
-        page2: "path to page2 bundle entry file"
-    }
-};
 ```
