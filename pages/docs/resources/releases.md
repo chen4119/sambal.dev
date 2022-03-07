@@ -6,12 +6,14 @@ articleSection: Resources
 position: 5
 ---
 
-* Oct. 29, 2021 - 0.1.0
+* March 7, 2022 - 0.1.0
+  * Use query params on image url to resize
+  * Bundle css files and inline styles
+  * Use npm workspace for theme
   * Deprecate imageTransforms config
   * Deprecate browserBundle config
-  * Use query params on image uri to resize
-  * 
-* Oct. 29, 2021 - 0.0.63
+  
+* October 29, 2021 - 0.0.63
   * Init release
 
 

@@ -1,7 +1,7 @@
 "@type": SoftwareSourceCode
 headline: Sambal
 description: SEO friendly static site generator
-alternativeHeadline: A linked data static site generator
+alternativeHeadline: A json-ld static site generator
 codeRepository: https://github.com/chen4119/sambal
 programmingLanguage: Typescript
 potentialAction:

@@ -27,7 +27,7 @@ From this ImageObject structured data, you have all the information you need to 
 
 ```
 
-# Referencing image(s) in schema.org json-ld
+# Reference image(s) in schema.org json-ld
 
 Referencing an image is exactly the same as referencing another yaml or json file.  Sambal will take care of converting an image into an ImageObject structured data.  For example, to reference a local image file at data/images/image-1.jpg
 

@@ -1,6 +1,6 @@
 ---
 "@type": Article
-headline: A linked data static site generator
+headline: A json-ld static site generator
 description: Generate SEO website directly from schema.org json-ld data
 ---
 
