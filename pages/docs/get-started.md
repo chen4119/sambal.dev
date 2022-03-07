@@ -1,6 +1,7 @@
 ---
 "@type": Article
 headline: Get Started
+description: Get started with Sambal static site generator
 articleSection: root
 ---
 
@@ -24,7 +25,6 @@ For your convenience add the following sambal CLI commands to package.json
 "scripts": {
     "start": "sambal serve",    // start dev server
     "build": "sambal build",    // build static site in /public
-    "theme": "sambal theme"     // bundle sambal.entry.js in /dist
 }
 ```
 
