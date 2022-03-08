@@ -12,8 +12,7 @@
     ],
     "scripts": {
         "start": "sambal serve",
-        "build": "sambal build",
-        "deploy": "npm run theme && npm run build"
+        "build": "sambal build"
     },
     "devDependencies": {
         "sambal": "0.1.5"
