@@ -65,8 +65,8 @@ Sambal will automatically fetch the references and hydrate the blogpost as such
         "@type": "ImageObject",
         "contentUrl": "https://example.com/2021/media/image-1.webp",
         "encodingFormat": "image/webp",
-        "width": "&lt;actual width of image&gt;",
-        "height": "&lt;actual height of image&gt;"
+        "width": "<actual width of image>",
+        "height": "<actual height of image>"
     },
     "text": "My first blog post!",
     "encodingFormat": "text/markdown"

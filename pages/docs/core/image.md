@@ -16,8 +16,8 @@ Sambal can auto convert jpg, webp, gif and png image to schema.org ImageObject s
     "url": "https://example.com/data/images/image-1.jpg",   // Absolute URL to the image
     "contentUrl": "/data/images/image-1.jpg",               // Relative URL to your hostname
     "encodingFormat": "image/jpg",                          // Mime type of your image
-    "width": "&lt;actual width of image&gt;",               // Actual width of your image
-    "height": "&lt;actual height of image&gt;"              // Actual height of your image
+    "width": "<actual width of image>",                     // Actual width of your image
+    "height": "<actual height of image>"                    // Actual height of your image
 }
 ```
 
@@ -52,8 +52,8 @@ The blogpost json-ld will look like this
         "url": "https://example.com/data/images/image-1.jpg",
         "contentUrl": "/data/images/image-1.jpg",
         "encodingFormat": "image/jpg",
-        "width": "&lt;actual width of image&gt;",
-        "height": "&lt;actual height of image&gt;"
+        "width": "<actual width of image>",
+        "height": "<actual height of image>"
     },
     "text": "My first blog post!",
     "encodingFormat": "text/markdown"
@@ -85,16 +85,16 @@ The blogpost json-ld will look like this
             "url": "https://example.com/data/images/image-1.jpg",
             "contentUrl": "/data/images/image-1.jpg",
             "encodingFormat": "image/jpg",
-            "width": "&lt;actual width of image-1&gt;",
-            "height": "&lt;actual height of image-1&gt;"
+            "width": "<actual width of image>",
+        "height": "<actual height of image>"
         },
         {
             "@type": "ImageObject",
             "url": "https://example.com/data/images/image-2.jpg",
             "contentUrl": "/data/images/image-2.jpg",
             "encodingFormat": "image/jpg",
-            "width": "&lt;actual width of image-2&gt;",
-            "height": "&lt;actual height of image-2&gt;"
+            "width": "<actual width of image>",
+        "height": "<actual height of image>"
         }
     ],
     "text": "My first blog post!",

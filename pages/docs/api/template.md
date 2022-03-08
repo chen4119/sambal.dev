@@ -14,23 +14,23 @@ A Javascript template literal to render HTML
 import { template } from "sambal";
 
 const listItems = [
-    "&lt;li&gt;one&lt;/li&gt;",
-    "&lt;li&gt;two&lt;/li&gt;",
-    "&lt;li&gt;three&lt;/li&gt;"
+    "<li>one</li>",
+    "<li>two</li>",
+    "<li>three</li>"
 ];
 
 const html = await template`
-    &lt;ul&gt;
+    <ul>
         ${listItems}
-    &lt;/ul&gt;
+    </ul>
 `;
 
 /*
-    &lt;ul&gt;
-        &lt;li&gt;one&lt;/li&gt;
-        &lt;li&gt;two&lt;/li&gt;
-        &lt;li&gt;three&lt;/li&gt;
-    &lt;/ul&gt;
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
 */
 ```
 
@@ -40,23 +40,23 @@ const html = await template`
 import { template } from "sambal";
 
 const itemFragment = template`
-    &lt;li&gt;
-        &lt;b&gt;Hello world&lt;/b&gt;
-    &lt;/li&gt;
+    <li>
+        <b>Hello world</b>
+    </li>
 `;
 
 const html = await template`
-    &lt;ul&gt;
+    <ul>
         ${itemFragment}
-    &lt;/ul&gt;
+    </ul>
 `;
 
 /*
-    &lt;ul&gt;
-        &lt;li&gt;
-            &lt;b&gt;Hello world&lt;/b&gt;
-        &lt;/li&gt;
-    &lt;/ul&gt;
+    <ul>
+        <li>
+            <b>Hello world</b>
+        </li>
+    </ul>
 */
 ```
 
@@ -65,22 +65,22 @@ const html = await template`
 ```js
 import { template } from "sambal";
 
-const fetchData = async () =&gt; {
+const fetchData = async () => {
     // do some custom fetching before rendering html fragment
 
-    return template`&lt;li&gt;hello world&lt;/li&gt;`;
+    return template`<li>hello world</li>`;
 };
 
 const html = await template`
-    &lt;ul&gt;
+    <ul>
         ${fetchData()}
-    &lt;/ul&gt;
+    </ul>
 `;
 
 /*
-    &lt;ul&gt;
-        &lt;li&gt;hello world&lt;/li&gt;
-    &lt;/ul&gt;
+    <ul>
+        <li>hello world</li>
+    </ul>
 */
 ```
 

@@ -15,14 +15,14 @@ import { template } from "sambal";
 export async function renderPage({ page, options }) {
     const { mainEntity } = page;
     return template`
-        &lt;html&gt;
-            &lt;head&gt;
-                &lt;script src="index.js"&gt;&lt;/script&gt;
-            &lt;/head&gt;
-            &lt;body&gt;
+        <html>
+            <head>
+                <script src="index.js"></script>
+            </head>
+            <body>
                 ${renderBlogPost(mainEntity)}
-            &lt;/body&gt;
-        &lt;/html&gt;
+            </body>
+        </html>
     `;
 }
 ```
@@ -34,18 +34,18 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 export function renderPage({ page, options }) {
     const HtmlDoc = ({ mainEntity }) => (
-        &lt;html&gt;
-            &lt;head&gt;
-                &lt;script src="index.js"&gt;&lt;/script&gt;
-            &lt;/head&gt;
-            &lt;body&gt;
-                &lt;BlogPost post={mainEntity}&gt;
-            &lt;/body&gt;
-        &lt;/html&gt;
+        <html>
+            <head>
+                <script src="index.js"></script>
+            </head>
+            <body>
+                <BlogPost post={mainEntity}>
+            </body>
+        </html>
     );
 
     return ReactDOMServer.renderToString(
-        &lt;HtmlDoc mainEntity={page.mainEntity} /&gt;
+        <HtmlDoc mainEntity={page.mainEntity} />
     );
 }
 ```
@@ -65,18 +65,18 @@ You get SEO for free if you use schema.org json-ld!  No need to transform or map
 
 ```html
 
-&lt;title&gt;Title of my article&lt;/title&gt;
+<title>Title of my article</title>
 
-&lt;meta name="twitter:card" content="summary" /&gt;
-&lt;meta name="twitter:title" content="Title of my article" /&gt;
-&lt;meta name="twitter:description" content="Description about my article" /&gt;
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Title of my article" />
+<meta name="twitter:description" content="Description about my article" />
 
     
-&lt;meta name="og:url" content="https://example.com/article" /&gt;
-&lt;meta name="og:title" content="Title of my article" /&gt;
-&lt;meta name="og:description" content="Description about my article" /&gt;
+<meta name="og:url" content="https://example.com/article" />
+<meta name="og:title" content="Title of my article" />
+<meta name="og:description" content="Description about my article" />
 
-&lt;script type="application/ld+json"&gt;
+<script type="application/ld+json">
 {
     "@context": {
         "@vocab": "https://schema.org",
@@ -87,7 +87,7 @@ You get SEO for free if you use schema.org json-ld!  No need to transform or map
     "description": "Description about my article",
     ...other fields
 }
-&lt;/script&gt;
+</script>
 ```
 
 
@@ -95,25 +95,25 @@ You get SEO for free if you use schema.org json-ld!  No need to transform or map
 
 Static HTML sites are great but eventually you'll need some client side Javascript to spice up your site.  Sambal uses [Webpack](https://webpack.js.org/) internally to bundle Javascript.  You just need to include it in your HTML document and Sambal will take care of bundling the Javascript and all it's dependencies.  Note that the src path will always be evaluated relative to your root project path.
 
-Add script in &lt;head&gt;
+Add script in <head>
 
 ```html
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;script src="index.js"&gt;&lt;/script&gt;
-    &lt;/head&gt;
-&lt;/html&gt;
+<html>
+    <head>
+        <script src="index.js"></script>
+    </head>
+</html>
 ```
 
-Or at the end of &lt;body&gt; to prevent blocking.  You have 100% control of your HTML document.
+Or at the end of <body> to prevent blocking.  You have 100% control of your HTML document.
 
 ```html
-&lt;html&gt;
-    &lt;body&gt;
+<html>
+    <body>
         ...your HTML body
-        &lt;script src="index.js"&gt;&lt;/script&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
+        <script src="index.js"></script>
+    </body>
+</html>
 ```
 
 # Add CSS
@@ -123,21 +123,21 @@ There are 3 ways you can add css to your HTML.  In every case, Sambal will take 
 1. Use stylesheet link
 
 ```html
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;link rel="stylesheet" href="styles.css"&gt;
-    &lt;/head&gt;
-&lt;/html&gt;
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+</html>
 ```
 
-2. Inline &lt;style&gt;
+2. Inline <style>
 
 ```html
-&lt;style&gt;
+<style>
     h1 {
         color: red;
     }
-&lt;/style&gt;
+</style>
 ```
 
 3. Import it from javascript file
