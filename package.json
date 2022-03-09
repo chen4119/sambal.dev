@@ -12,7 +12,7 @@
     ],
     "scripts": {
         "start": "sambal serve",
-        "build": "sambal build"
+        "build": "sambal build && node deploy.js"
     },
     "devDependencies": {
         "sambal": "0.1.5"
