@@ -15,6 +15,6 @@
         "build": "sambal build && node deploy.js"
     },
     "devDependencies": {
-        "sambal": "0.1.5"
+        "sambal": "0.1.7"
     }
 }
